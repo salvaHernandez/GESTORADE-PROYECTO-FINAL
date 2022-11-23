@@ -15,7 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GESTORADETFG">
         <activity
-            android:name="com.example.gestoradetfg.MainActivity"
+            android:name=".UsuarioActivity"
+            android:exported="true"
+            android:label="@string/title_activity_usuario" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
