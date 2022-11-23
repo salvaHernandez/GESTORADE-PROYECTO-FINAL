@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GESTORADE TFG</string>
+    <string name="request_id_token">527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com</string>
+    <string name="userName">User</string>
+    <string name="pass">Pass</string>
+    <string name="btnEntrar">Login</string>
+    <string name="btnEntrarGoogle">Login with Google</string>
+    <string name="btnSalir">Exit</string>
+    <string name="btnEnviar">Send</string>
+    <string name="btnReiniciar">Restart</string>
+    <string name="btnGenerarUser">Generate User</string>
+    <string name="btnRegistrar">Register</string>
+    <string name="btnCancelar">Cancel</string>
+    <string name="StrCheckSesion">Keep me signed in</string>
+    <string name="smsBienvenida">Recent orders</string>
+    <string name="txtMostrarTodos">Show all events</string>
+
+    <string name="menuInicio">Initiation</string>
+    <string name="menuProveedores">Providers</string>
+    <string name="menuProductos">Products</string>
+    <string name="topTittle">Orders management</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
+</resources>
