@@ -1,41 +1,70 @@
 {
   "project_info": {
-    "project_number": "945799945728",
-    "project_id": "gestorade-c13e0",
-    "storage_bucket": "gestorade-c13e0.appspot.com"
+    "project_number": "527625456564",
+    "project_id": "gestorade-tfg",
+    "storage_bucket": "gestorade-tfg.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:945799945728:android:250ba87a1ab9cc4e57c2e5",
+        "mobilesdk_app_id": "1:527625456564:android:dbe3f5250c815d870380e1",
         "android_client_info": {
           "package_name": "com.example.gestorade"
         }
       },
       "oauth_client": [
         {
-          "client_id": "945799945728-bv3kula2gd6f1seomrpd081vmeg1pcqh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.gestorade",
-            "certificate_hash": "18b7c3f4756f3140c638c2ef30bf378eed8dd1de"
-          }
-        },
-        {
-          "client_id": "945799945728-bam9sr6u5jiqk6e4f76h59bddg4jj3b7.apps.googleusercontent.com",
+          "client_id": "527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA_TMQRfhay0ZU5sUJBflX-2jfNIlCktaM"
+          "current_key": "AIzaSyB99epFglT9UdB0IkHMsU_DPb8tKEbM3io"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "945799945728-bam9sr6u5jiqk6e4f76h59bddg4jj3b7.apps.googleusercontent.com",
+              "client_id": "527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527625456564:android:c487b495b51671a40380e1",
+        "android_client_info": {
+          "package_name": "com.example.gestoradetfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527625456564-ar9tcgpr4pve93cflcfj97c1f0226b4k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gestoradetfg",
+            "certificate_hash": "18b7c3f4756f3140c638c2ef30bf378eed8dd1de"
+          }
+        },
+        {
+          "client_id": "527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB99epFglT9UdB0IkHMsU_DPb8tKEbM3io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
