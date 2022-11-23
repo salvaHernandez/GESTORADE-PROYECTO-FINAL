@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "945799945728",
+    "project_id": "gestorade-c13e0",
+    "storage_bucket": "gestorade-c13e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945799945728:android:250ba87a1ab9cc4e57c2e5",
+        "android_client_info": {
+          "package_name": "com.example.gestorade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945799945728-bv3kula2gd6f1seomrpd081vmeg1pcqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gestorade",
+            "certificate_hash": "18b7c3f4756f3140c638c2ef30bf378eed8dd1de"
+          }
+        },
+        {
+          "client_id": "945799945728-bam9sr6u5jiqk6e4f76h59bddg4jj3b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_TMQRfhay0ZU5sUJBflX-2jfNIlCktaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945799945728-bam9sr6u5jiqk6e4f76h59bddg4jj3b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
