@@ -12,15 +12,17 @@
     <string name="btnRegistrar">Registrar</string>
     <string name="btnCancelar">Cancelar</string>
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
-    <string name="smsBienvenida">Pedidos recientes</string>
-    <string name="txtMostrarTodos">Mostrar todos los eventos</string>
-
+    <string name="smsBienvenida">Pedidos pendientes de recibir</string>
+    <string name="txtMostrarTodos">Mostrar todos los pedidos</string>
     <string name="menuInicio">Inicio</string>
     <string name="menuProveedores">Proveedores</string>
     <string name="menuProductos">Productos</string>
     <string name="topTittle">Gestion de pedidos</string>
     <string name="open_drawer">Abrir</string>
     <string name="close_drawer">Cerrar</string>
+
+
+
     <string name="title_activity_usuario">UsuarioActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

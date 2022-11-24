@@ -13,13 +13,21 @@
     <string name="btnRegistrar">Register</string>
     <string name="btnCancelar">Cancel</string>
     <string name="StrCheckSesion">Keep me signed in</string>
-    <string name="smsBienvenida">Recent orders</string>
-    <string name="txtMostrarTodos">Show all events</string>
-
+    <string name="smsBienvenida">Orders pending receipt</string>
+    <string name="txtMostrarTodos">Show all orders</string>
     <string name="menuInicio">Initiation</string>
     <string name="menuProveedores">Providers</string>
     <string name="menuProductos">Products</string>
     <string name="topTittle">Orders management</string>
     <string name="open_drawer">Open</string>
     <string name="close_drawer">Close</string>
+
+
+    <string name="title_activity_usuario">UsuarioActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
