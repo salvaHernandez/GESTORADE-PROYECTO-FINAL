@@ -1,0 +1,67 @@
+package com.example.gestoradetfg.Adapter
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Switch
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gestoradetfg.Model.Proveedor
+import com.example.gestoradetfg.R
+
+class RecyclerProveedor (var context: AppCompatActivity, var listaUser:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
+
+
+    override fun getItemCount(): Int {
+        return this.listaUser?.size!!
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.proveedor_card,parent,false))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = listaUser[position]
+        holder.bind(item, context, this)
+    }
+
+
+    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+
+
+
+
+
+        fun bind(p: Proveedor, context: AppCompatActivity, adaptador: RecyclerProveedor) {
+/*
+            nombre.text=u.email
+            verificado.isChecked = u.verificado
+
+
+            itemView.setOnClickListener{
+                if (!u.admin) {
+                    if(verificado.isChecked) {
+                        ModificarVerificacion(u, false)
+                    } else {
+                        ModificarVerificacion(u, true)
+                    }
+                } else {
+                    Toast.makeText(context, R.string.smsSinPermisos, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            itemView.setOnLongClickListener {
+                if (!u.admin) {
+                    BorrarUser(context, adaptador, u)
+                } else {
+                    Toast.makeText(context, R.string.smsSinPermisosB, Toast.LENGTH_SHORT).show()
+                }
+                true
+            }
+ */
+        }
+
+
+    }
+}

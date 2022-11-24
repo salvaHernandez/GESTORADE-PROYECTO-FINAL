@@ -34,13 +34,14 @@
         android:id="@+id/txtMostrarTodos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
         android:text="@string/txtMostrarTodos"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAllPedidos"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHome"
         app:layout_constraintVertical_bias="0.23"
         tools:ignore="TouchTargetSizeCheck" />
 

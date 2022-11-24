@@ -34,19 +34,19 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
 
-        val intent : Intent
-        intent = Intent(this,UsuarioActivity::class.java)
-
-        //   intent.putExtra("user", usuario)
-        startActivity(intent)
-
-
 
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
         val analy: FirebaseAnalytics= FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("message","Integración completada")
         analy.logEvent("InitScreen",bundle)
+
+
+        val intent : Intent
+        intent = Intent(this,UsuarioActivity::class.java)
+
+        //   intent.putExtra("user", usuario)
+        startActivity(intent)
 
     }
 
@@ -116,6 +116,13 @@ class MainActivity : AppCompatActivity() {
         usuario.admin = isAdmin
         usuario.email = email
 
+
+
+        val intent : Intent
+        intent = Intent(this,UsuarioActivity::class.java)
+
+        //   intent.putExtra("user", usuario)
+        startActivity(intent)
 */
 
     }

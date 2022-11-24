@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gestoradetfg.Adapter.RecyclerHomePedido
+import com.example.gestoradetfg.Adapter.RecyclerProveedor
 import com.example.gestoradetfg.R
+import com.example.gestoradetfg.UsuarioActivity
+import com.example.gestoradetfg.Utils.Auxiliar
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_proveedor.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +43,17 @@ class ProveedorFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_proveedor, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerProveedor.setHasFixedSize(true)
+        recyclerProveedor.layoutManager = LinearLayoutManager(view.context)
+        Auxiliar.miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, UsuarioActivity.listaProveedores)
+        recyclerProveedor.adapter =Auxiliar.miAdapterProveedor
+
     }
 
     companion object {
