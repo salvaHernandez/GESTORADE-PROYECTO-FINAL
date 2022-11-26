@@ -14,7 +14,7 @@
     <string name="btnCancelar">Cancel</string>
     <string name="StrCheckSesion">Keep me signed in</string>
     <string name="smsBienvenida">Orders pending receipt</string>
-    <string name="txtMostrarTodos">Show all orders</string>
+    <string name="txtMostrarTodos">Also show received orders</string>
     <string name="menuInicio">Initiation</string>
     <string name="menuProveedores">Providers</string>
     <string name="menuProductos">Products</string>

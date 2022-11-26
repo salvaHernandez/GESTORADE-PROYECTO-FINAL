@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 
-class RecyclerProveedor (var context: AppCompatActivity, var listaUser:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
+class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        return this.listaUser?.size!!
+        return this.listaProveedores?.size!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,10 +22,15 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaUser:ArrayList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = listaUser[position]
+        val item = listaProveedores[position]
         holder.bind(item, context, this)
     }
 
+
+    fun updateProveedores (listFiltrada : List<Proveedor>) {
+        this.listaProveedores = ArrayList(listFiltrada)
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 

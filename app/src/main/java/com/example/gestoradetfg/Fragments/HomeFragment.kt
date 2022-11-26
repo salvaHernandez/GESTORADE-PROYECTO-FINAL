@@ -11,6 +11,8 @@ import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conLoginAdmin
 import com.example.gestoradetfg.UsuarioActivity.Companion.listaPedidos
 import com.example.gestoradetfg.Utils.Auxiliar
+import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
+import com.example.gestoradetfg.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -27,7 +29,7 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String?=null
     private var param2: String?=null
-
+    private lateinit var binding: FragmentHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -42,6 +44,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }

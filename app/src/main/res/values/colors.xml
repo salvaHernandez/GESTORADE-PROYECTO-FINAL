@@ -8,8 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorBtn">#086C63</color>
+    <color name="colorBtn">#097269</color>
     <color name="colorApp">#054C46</color>
     <color name="colorSecundario">#066058</color>
+
+    <color name="cabeceras">#013845</color>
+    <color name="boton">#378BA4</color>
+    <color name="fondo">#E8EDE7</color>
+    <color name="fondo2">#CFCBC8</color>
+    <color name="letraOscura">#012E4A</color>
+    <color name="floatBtn">#576319</color>
+    <color name="alternativo">#576319</color>
+
 
 </resources>

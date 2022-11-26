@@ -13,8 +13,8 @@
     <string name="btnCancelar">Cancelar</string>
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
     <string name="smsBienvenida">Pedidos pendientes de recibir</string>
-    <string name="txtMostrarTodos">Mostrar todos los pedidos</string>
-    <string name="menuInicio">Inicio</string>
+    <string name="txtMostrarTodos">Mostrar tambien los pedidos recibidos</string>
+    <string name="menuInicio">Pedidos</string>
     <string name="menuProveedores">Proveedores</string>
     <string name="menuProductos">Productos</string>
     <string name="topTittle">Gestion de pedidos</string>

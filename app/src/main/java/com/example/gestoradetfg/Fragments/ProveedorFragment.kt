@@ -5,12 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Adapter.RecyclerProveedor
+import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity
+import com.example.gestoradetfg.UsuarioActivity.Companion.listaProveedores
 import com.example.gestoradetfg.Utils.Auxiliar
+import com.example.gestoradetfg.Utils.Auxiliar.miAdapterProveedor
+import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
+import com.example.gestoradetfg.databinding.FragmentProveedorBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_proveedor.*
 
@@ -18,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_proveedor.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1="param1"
 private const val ARG_PARAM2="param2"
-
+private lateinit var bindingProv: FragmentProveedorBinding
 /**
  * A simple [Fragment] subclass.
  * Use the [ProveedorFragment.newInstance] factory method to
@@ -34,6 +40,15 @@ class ProveedorFragment : Fragment() {
         arguments?.let {
             param1=it.getString(ARG_PARAM1)
             param2=it.getString(ARG_PARAM2)
+
+
+            bindingProv=FragmentProveedorBinding.inflate(layoutInflater)
+
+            bindingProv.etFilterProveedor.addTextChangedListener { userFilter ->
+                val proveedorFiltered = listaProveedores.filter { prov -> prov.nombre.lowercase().contains(userFilter.toString().lowercase()) }
+                miAdapterProveedor.updateProveedores(proveedorFiltered)
+            }
+
         }
     }
 
@@ -53,6 +68,8 @@ class ProveedorFragment : Fragment() {
         recyclerProveedor.layoutManager = LinearLayoutManager(view.context)
         Auxiliar.miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, UsuarioActivity.listaProveedores)
         recyclerProveedor.adapter =Auxiliar.miAdapterProveedor
+
+
 
     }
 

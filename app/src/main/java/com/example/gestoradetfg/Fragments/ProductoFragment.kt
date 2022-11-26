@@ -1,5 +1,6 @@
 package com.example.gestoradetfg.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -53,6 +54,12 @@ class ProductoFragment : Fragment() {
         recyclerProducto.layoutManager = LinearLayoutManager(view.context)
         Auxiliar.miAdapterProducto = RecyclerProducto (UsuarioActivity.conLoginAdmin, UsuarioActivity.listaProductos)
         recyclerProducto.adapter =Auxiliar.miAdapterProducto
+
+        btnAddProducto.setOnClickListener({
+
+
+        })
+
     }
 
     companion object {

@@ -41,13 +41,6 @@ class MainActivity : AppCompatActivity() {
         bundle.putString("message","Integración completada")
         analy.logEvent("InitScreen",bundle)
 
-
-        val intent : Intent
-        intent = Intent(this,UsuarioActivity::class.java)
-
-        //   intent.putExtra("user", usuario)
-        startActivity(intent)
-
     }
 
 
