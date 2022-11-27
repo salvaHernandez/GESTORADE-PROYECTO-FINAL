@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity
 import com.example.gestoradetfg.Utils.Auxiliar
+import com.example.gestoradetfg.Utils.Auxiliar.listaProductos
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_producto.*
 
@@ -52,7 +52,7 @@ class ProductoFragment : Fragment() {
 
         recyclerProducto.setHasFixedSize(true)
         recyclerProducto.layoutManager = LinearLayoutManager(view.context)
-        Auxiliar.miAdapterProducto = RecyclerProducto (UsuarioActivity.conLoginAdmin, UsuarioActivity.listaProductos)
+        Auxiliar.miAdapterProducto = RecyclerProducto (UsuarioActivity.conLoginAdmin, listaProductos)
         recyclerProducto.adapter =Auxiliar.miAdapterProducto
 
         btnAddProducto.setOnClickListener({

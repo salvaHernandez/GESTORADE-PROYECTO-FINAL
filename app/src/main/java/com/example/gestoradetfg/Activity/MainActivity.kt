@@ -33,8 +33,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+        irLogin("", ProviderType.GOOGLE, true, true)
 
-
+        Log.e("Salva", "On create")
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
         val analy: FirebaseAnalytics= FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
@@ -45,6 +46,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun LoginGoogle (view: View) {
+        Log.e("Salva", "principio LoginGoogle")
+
         val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.request_id_token)) //Esto se encuentra en el archivo google-services.json: client->oauth_client -> client_id
             .requestEmail()
@@ -54,18 +57,24 @@ class MainActivity : AppCompatActivity() {
         googleClient.signOut() //Con esto salimos de la posible cuenta  de Google que se encuentre logueada.
         val signInIntent = googleClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+        Log.e("Salva", "final LoginGoogle")
 
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Log.e("Salva", "principio onActivityResult")
 
         // Si la respuesta de esta activity se corresponde con la inicializada es que viene de la autenticación de Google.
         if (requestCode == RC_SIGN_IN) {
-            val task=GoogleSignIn.getSignedInAccountFromIntent(data)
+            Log.e("Salva", "Entra requestCode")
+
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            Log.e("Salva", "post Task")
             try {
                 val account=task.getResult(ApiException::class.java)!!
+                Log.e("Salva", "La cuenta que recoge es:" +account.id)
 
                 if (account != null) {
                     val credential: AuthCredential=
@@ -110,13 +119,13 @@ class MainActivity : AppCompatActivity() {
         usuario.email = email
 
 
-
+*/
         val intent : Intent
         intent = Intent(this,UsuarioActivity::class.java)
 
         //   intent.putExtra("user", usuario)
         startActivity(intent)
-*/
+
 
     }
 

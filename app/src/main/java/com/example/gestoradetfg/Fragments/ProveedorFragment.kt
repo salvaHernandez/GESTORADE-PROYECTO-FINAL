@@ -1,6 +1,7 @@
 package com.example.gestoradetfg.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,9 @@ import com.example.gestoradetfg.Adapter.RecyclerProveedor
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity
-import com.example.gestoradetfg.UsuarioActivity.Companion.listaProveedores
 import com.example.gestoradetfg.Utils.Auxiliar
+import com.example.gestoradetfg.Utils.Auxiliar.getProveedores
+import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
 import com.example.gestoradetfg.Utils.Auxiliar.miAdapterProveedor
 import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
 import com.example.gestoradetfg.databinding.FragmentProveedorBinding
@@ -42,7 +44,8 @@ class ProveedorFragment : Fragment() {
             param2=it.getString(ARG_PARAM2)
 
 
-            bindingProv=FragmentProveedorBinding.inflate(layoutInflater)
+
+            bindingProv = FragmentProveedorBinding.inflate(layoutInflater)
 
             bindingProv.etFilterProveedor.addTextChangedListener { userFilter ->
                 val proveedorFiltered = listaProveedores.filter { prov -> prov.nombre.lowercase().contains(userFilter.toString().lowercase()) }
@@ -64,10 +67,14 @@ class ProveedorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.e("Salva", "Llega al fragmentProveedor")
+
+        getProveedores()
+        Log.e("Salva", "Despues de getProv")
         recyclerProveedor.setHasFixedSize(true)
         recyclerProveedor.layoutManager = LinearLayoutManager(view.context)
-        Auxiliar.miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, UsuarioActivity.listaProveedores)
-        recyclerProveedor.adapter =Auxiliar.miAdapterProveedor
+        miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, listaProveedores)
+        recyclerProveedor.adapter = miAdapterProveedor
 
 
 

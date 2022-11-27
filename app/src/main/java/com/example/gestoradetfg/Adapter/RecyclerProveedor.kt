@@ -1,5 +1,6 @@
 package com.example.gestoradetfg.Adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
+import com.example.gestoradetfg.databinding.FragmentProveedorBinding
+import com.example.gestoradetfg.databinding.ProveedorCardBinding
+
+private lateinit var bindingProv: ProveedorCardBinding
 
 class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
 
@@ -24,6 +29,7 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = listaProveedores[position]
         holder.bind(item, context, this)
+
     }
 
 
@@ -34,14 +40,19 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
+        val nombre = view.findViewById<TextView>(R.id.txtProveedorPedidoCard)
+
 
 
 
 
         fun bind(p: Proveedor, context: AppCompatActivity, adaptador: RecyclerProveedor) {
-/*
-            nombre.text=u.email
-            verificado.isChecked = u.verificado
+
+            Log.e("Salva", "llega al recy   "+p.nombre)
+
+            nombre.text = p.nombre
+
+/*            verificado.isChecked = u.verificado
 
 
             itemView.setOnClickListener{

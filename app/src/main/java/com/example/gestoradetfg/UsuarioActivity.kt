@@ -1,6 +1,7 @@
 package com.example.gestoradetfg
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,14 +13,16 @@ import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.Utils.Auxiliar
+import com.example.gestoradetfg.Utils.Auxiliar.getPedidos
+import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
+import com.example.gestoradetfg.Utils.Auxiliar.listaProductoProveedor
+import com.example.gestoradetfg.Utils.Auxiliar.listaProductos
+import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
 import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
 
 class UsuarioActivity : AppCompatActivity() {
     companion object {
         lateinit var conLoginAdmin : AppCompatActivity
-        lateinit var listaPedidos : ArrayList<Pedido>
-        lateinit var listaProveedores : ArrayList<Proveedor>
-        lateinit var listaProductos : ArrayList<Producto>
     }
 
     private lateinit var binding: ActivityUsuarioBinding
@@ -27,15 +30,19 @@ class UsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.e("Salva", "Usuario activityyyyyyyyyyyyyyyy   ")
+
         conLoginAdmin = this
         listaPedidos = arrayListOf()
         listaProveedores = arrayListOf()
         listaProductos = arrayListOf()
-//        Auxiliar.getPedidos(false)
+        listaProductoProveedor = arrayListOf()
 
         // Codigo generado por los fragments
         binding=ActivityUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.e("Salva", "Pasa el binding   ")
 
         
 
