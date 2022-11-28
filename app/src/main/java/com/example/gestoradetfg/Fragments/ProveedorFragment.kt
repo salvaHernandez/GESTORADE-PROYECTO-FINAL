@@ -67,10 +67,8 @@ class ProveedorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.e("Salva", "Llega al fragmentProveedor")
 
         getProveedores()
-        Log.e("Salva", "Despues de getProv")
         recyclerProveedor.setHasFixedSize(true)
         recyclerProveedor.layoutManager = LinearLayoutManager(view.context)
         miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, listaProveedores)

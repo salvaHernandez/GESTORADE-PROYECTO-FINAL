@@ -7,6 +7,9 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
+import com.example.gestoradetfg.Utils.Auxiliar.getPedidos
+import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
+import com.example.gestoradetfg.Utils.Auxiliar.listaProductoPedido
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -33,9 +36,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+        listaProductoPedido = arrayListOf()
+        listaPedidos = arrayListOf()
+        getPedidos("id Usuario")
         irLogin("", ProviderType.GOOGLE, true, true)
 
-        Log.e("Salva", "On create")
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
         val analy: FirebaseAnalytics= FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
@@ -46,7 +51,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun LoginGoogle (view: View) {
-        Log.e("Salva", "principio LoginGoogle")
 
         val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.request_id_token)) //Esto se encuentra en el archivo google-services.json: client->oauth_client -> client_id
@@ -57,21 +61,17 @@ class MainActivity : AppCompatActivity() {
         googleClient.signOut() //Con esto salimos de la posible cuenta  de Google que se encuentre logueada.
         val signInIntent = googleClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
-        Log.e("Salva", "final LoginGoogle")
 
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.e("Salva", "principio onActivityResult")
 
         // Si la respuesta de esta activity se corresponde con la inicializada es que viene de la autenticación de Google.
         if (requestCode == RC_SIGN_IN) {
-            Log.e("Salva", "Entra requestCode")
 
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            Log.e("Salva", "post Task")
             try {
                 val account=task.getResult(ApiException::class.java)!!
                 Log.e("Salva", "La cuenta que recoge es:" +account.id)

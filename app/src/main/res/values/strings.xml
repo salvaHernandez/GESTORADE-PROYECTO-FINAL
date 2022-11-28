@@ -18,11 +18,17 @@
     <string name="menuProveedores">Proveedores</string>
     <string name="menuProductos">Productos</string>
     <string name="topTittle">Gestion de pedidos</string>
+    <string name="msgPedidoSucc">Pedido realizado Correctamente</string>
+    <string name="msgPedidoNoSucc">Problema al realizar el pedido</string>
+    <string name="msgProveedorSucc">Proveedor creado correctamente</string>
+    <string name="msgProveedorNoSucc">Problema al crear el proveedor</string>
+    <string name="msgProductoSucc">Producto creado correctamente</string>
+    <string name="msgProductoNoSucc">Problema al crear el producto</string>
+
+
+
     <string name="open_drawer">Abrir</string>
     <string name="close_drawer">Cerrar</string>
-
-
-
     <string name="title_activity_usuario">UsuarioActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

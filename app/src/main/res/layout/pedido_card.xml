@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="0dp">
 
         <TextView
-            android:id="@+id/txtIdPedidoCard"
+            android:id="@+id/t_ped_id_card"
             android:layout_width="90dp"
             android:layout_height="40dp"
             android:textAlignment="gravity"
@@ -27,7 +27,7 @@
             app:layout_constraintVertical_bias="0.207" />
 
         <TextView
-            android:id="@+id/txtDireccionCard"
+            android:id="@+id/t_ped_direccion_card"
             android:layout_width="300dp"
             android:layout_height="39dp"
             android:textAlignment="gravity"
@@ -40,7 +40,7 @@
             app:layout_constraintVertical_bias="0.802" />
 
         <TextView
-            android:id="@+id/txtProveedorPedidoCard"
+            android:id="@+id/t_ped_proveedor_card"
             android:layout_width="210dp"
             android:layout_height="40dp"
             android:textAlignment="gravity"

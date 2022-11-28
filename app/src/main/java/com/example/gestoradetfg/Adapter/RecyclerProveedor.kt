@@ -1,16 +1,13 @@
 package com.example.gestoradetfg.Adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
-import com.example.gestoradetfg.databinding.FragmentProveedorBinding
 import com.example.gestoradetfg.databinding.ProveedorCardBinding
 
 private lateinit var bindingProv: ProveedorCardBinding
@@ -40,7 +37,7 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val nombre = view.findViewById<TextView>(R.id.txtProveedorPedidoCard)
+        val nombre = view.findViewById<TextView>(R.id.t_ped_proveedor_card)
 
 
 
@@ -48,7 +45,6 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
 
         fun bind(p: Proveedor, context: AppCompatActivity, adaptador: RecyclerProveedor) {
 
-            Log.e("Salva", "llega al recy   "+p.nombre)
 
             nombre.text = p.nombre
 

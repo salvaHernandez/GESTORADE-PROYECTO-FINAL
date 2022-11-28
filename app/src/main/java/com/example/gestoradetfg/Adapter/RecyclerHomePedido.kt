@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.R
 
-class RecyclerHomePedido (var context: AppCompatActivity, var pedido:ArrayList<Pedido>) : RecyclerView.Adapter<RecyclerHomePedido.ViewHolder>(){
+class RecyclerHomePedido (var context: AppCompatActivity, var listaPedidos:ArrayList<Pedido>) : RecyclerView.Adapter<RecyclerHomePedido.ViewHolder>(){
 
 
     override fun getItemCount(): Int {
-        return this.pedido?.size!!
+        return this.listaPedidos?.size!!
 
     }
 
@@ -24,7 +24,7 @@ class RecyclerHomePedido (var context: AppCompatActivity, var pedido:ArrayList<P
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = pedido[position]
+        val item = listaPedidos[position]
         holder.bind(item, context)
     }
 
@@ -32,9 +32,8 @@ class RecyclerHomePedido (var context: AppCompatActivity, var pedido:ArrayList<P
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val idPedido = view.findViewById<TextView>(R.id.txtIdPedidoCard)
-        val direccion = view.findViewById<TextView>(R.id.txtDireccionCard)
-        val proveedor = view.findViewById<TextView>(R.id.txtProveedorPedidoCard)
+        val idPedido = view.findViewById<TextView>(R.id.t_ped_id_card)
+        val direccion = view.findViewById<TextView>(R.id.t_ped_direccion_card)
 
 
 
@@ -42,7 +41,6 @@ class RecyclerHomePedido (var context: AppCompatActivity, var pedido:ArrayList<P
 
             idPedido.text = p.id
             direccion.text = p.direccionDeEnvio
-            proveedor.text = p.proveedor.nombre
             itemView.isEnabled = p.recibido
 
             // Si clicka hacer...

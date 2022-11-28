@@ -9,4 +9,5 @@ data class Producto(var id: String,
                     var precio : Double,
                     var calidad : Long,
                     // True = Unidad : False = Peso
-                    var tipoVenta : Boolean): Serializable
+                    var tipoVenta : Boolean,
+                    var cantidad : Double): Serializable

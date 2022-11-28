@@ -3,10 +3,10 @@ package com.example.gestoradetfg.Model
 import java.io.Serializable
 
 data class Pedido(var id: String,
-                  var proveedor: Proveedor,
-                  var productos: ArrayList<Producto>,
-                  var cantidad: ArrayList<Double>,
-                  var tiempoEnvio: Int,
-                  var precioFinal : Double,
+                  var usuario: String,
+                  var proveedor: String,
                   var direccionDeEnvio: String,
+                  var productos: ArrayList<Producto>,
+                  var precioFinal : Double,
+                  var tiempoEnvio: Long,
                   var recibido: Boolean): Serializable

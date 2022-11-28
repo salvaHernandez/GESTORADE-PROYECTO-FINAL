@@ -19,10 +19,18 @@
     <string name="menuProveedores">Providers</string>
     <string name="menuProductos">Products</string>
     <string name="topTittle">Orders management</string>
+    <string name="msgPedidoSucc">Order completed correctly</string>
+    <string name="msgPedidoNoSucc">Problem when ordering</string>
+    <string name="msgProveedorSucc">Provider created successfully</string>
+    <string name="msgProveedorNoSucc">Problem creating provider</string>
+    <string name="msgProductoSucc">Product created successfully</string>
+    <string name="msgProductoNoSucc">Problem creating the product</string>
+
+
+
+
     <string name="open_drawer">Open</string>
     <string name="close_drawer">Close</string>
-
-
     <string name="title_activity_usuario">UsuarioActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
