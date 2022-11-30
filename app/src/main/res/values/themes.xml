@@ -11,7 +11,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Customize your theme here.
+        <item name="editTextStyle">@style/Widget.AppCompat.EditText.GESTORADE</item>-->
+
     </style>
 
     <style name="btnTheme" parent="Theme.GESTORADETFG">
@@ -19,5 +21,14 @@
         <item name="colorOnPrimary">@color/letraOscura</item>
 
     </style>
+    <!--
+       <style name="Widget.AppCompat.EditText.GESTORADE" parent="Widget.AppCompat.EditText">
+           <item name="android:textSize">20</item>
+           <item name="android:fontFamily">sans-serif-medium</item>
+           <item name="android:textColor">@color/letraOscura</item>
+           <item name="android:textColorHint">@color/letraOscura</item>
+       </style>
+    -->
 
-</resources>
+
+   </resources>

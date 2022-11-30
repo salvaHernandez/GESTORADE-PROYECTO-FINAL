@@ -5,12 +5,19 @@
     <string name="pass">Contraseña</string>
     <string name="btnEntrar">Entrar</string>
     <string name="btnEntrarGoogle">Entrar con Google</string>
-    <string name="btnSalir">Salir</string>
-    <string name="btnEnviar">Enviar</string>
-    <string name="btnReiniciar">Reiniciar</string>
-    <string name="btnGenerarUser">Generar Usuario</string>
-    <string name="btnRegistrar">Registrar</string>
-    <string name="btnCancelar">Cancelar</string>
+    <string name="salir">Salir</string>
+    <string name="enviar">Enviar</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="generarUser">Generar Usuario</string>
+    <string name="registrar">Registrar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="nombre">Nombre</string>
+    <string name="direccion">Dirección</string>
+    <string name="email">Email</string>
+    <string name="telefono">Telefono</string>
+    <string name="observaciones">Observaciones</string>
+
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
     <string name="smsBienvenida">Pedidos pendientes de recibir</string>
     <string name="txtMostrarTodos">Mostrar tambien los pedidos recibidos</string>
@@ -18,13 +25,20 @@
     <string name="menuProveedores">Proveedores</string>
     <string name="menuProductos">Productos</string>
     <string name="topTittle">Gestion de pedidos</string>
-    <string name="msgPedidoSucc">Pedido realizado Correctamente</string>
-    <string name="msgPedidoNoSucc">Problema al realizar el pedido</string>
-    <string name="msgProveedorSucc">Proveedor creado correctamente</string>
-    <string name="msgProveedorNoSucc">Problema al crear el proveedor</string>
-    <string name="msgProductoSucc">Producto creado correctamente</string>
-    <string name="msgProductoNoSucc">Problema al crear el producto</string>
 
+    <string name="msgPedidoCrearSucc">Pedido realizado Correctamente</string>
+    <string name="msgPedidoCrearNoSucc">Problema al realizar el pedido</string>
+
+    <string name="msgProveedorCrearSucc">Proveedor creado correctamente</string>
+    <string name="msgProveedorCrearNoSucc">Problema al crear el proveedor</string>
+    <string name="msgProveedorModSucc">Proveedor modificado correctamente</string>
+    <string name="msgProveedorModNoSucc">Proveedor modificado correctamente</string>
+
+
+    <string name="msgProductoCrearSucc">Producto creado correctamente</string>
+    <string name="msgProductoCrearNoSucc">Problema al crear el producto</string>
+    <string name="msgProductoModSucc">Producto modificado correctamente</string>
+    <string name="msgProductoModNoSucc">Problema al modificar el producto</string>
 
 
     <string name="open_drawer">Abrir</string>

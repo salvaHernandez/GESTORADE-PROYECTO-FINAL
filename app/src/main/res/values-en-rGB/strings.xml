@@ -6,12 +6,20 @@
     <string name="pass">Pass</string>
     <string name="btnEntrar">Login</string>
     <string name="btnEntrarGoogle">Login with Google</string>
-    <string name="btnSalir">Exit</string>
-    <string name="btnEnviar">Send</string>
-    <string name="btnReiniciar">Restart</string>
-    <string name="btnGenerarUser">Generate User</string>
-    <string name="btnRegistrar">Register</string>
-    <string name="btnCancelar">Cancel</string>
+    <string name="salir">Exit</string>
+    <string name="enviar">Send</string>
+    <string name="reiniciar">Restart</string>
+    <string name="generarUser">Generate User</string>
+    <string name="registrar">Register</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
+    <string name="nombre">Name</string>
+    <string name="direccion">Address</string>
+    <string name="email">Email</string>
+    <string name="telefono">Phone</string>
+    <string name="observaciones">Observations</string>
+
+
     <string name="StrCheckSesion">Keep me signed in</string>
     <string name="smsBienvenida">Orders pending receipt</string>
     <string name="txtMostrarTodos">Also show received orders</string>
@@ -19,12 +27,21 @@
     <string name="menuProveedores">Providers</string>
     <string name="menuProductos">Products</string>
     <string name="topTittle">Orders management</string>
-    <string name="msgPedidoSucc">Order completed correctly</string>
-    <string name="msgPedidoNoSucc">Problem when ordering</string>
-    <string name="msgProveedorSucc">Provider created successfully</string>
-    <string name="msgProveedorNoSucc">Problem creating provider</string>
-    <string name="msgProductoSucc">Product created successfully</string>
-    <string name="msgProductoNoSucc">Problem creating the product</string>
+
+
+    <string name="msgPedidoCrearSucc">Order completed correctly</string>
+    <string name="msgPedidoCrearNoSucc">Problem when ordering</string>
+
+    <string name="msgProveedorCrearSucc">Provider created successfully</string>
+    <string name="msgProveedorCrearNoSucc">Problem creating provider</string>
+    <string name="msgProveedorModSucc">Provider modifield successfully</string>
+    <string name="msgProveedorModNoSucc">Problem modifying provider</string>
+
+
+    <string name="msgProductoCrearSucc">Product created successfully</string>
+    <string name="msgProductoCrearNoSucc">Problem creating the product</string>
+    <string name="msgProductoModSucc">Product modifield successfully</string>
+    <string name="msgProductoModNoSucc">Problem modifying the product</string>
 
 
 

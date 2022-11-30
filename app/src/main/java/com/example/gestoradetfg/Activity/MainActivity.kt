@@ -7,9 +7,12 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
+import com.example.gestoradetfg.Utils.Auxiliar
 import com.example.gestoradetfg.Utils.Auxiliar.getPedidos
+import com.example.gestoradetfg.Utils.Auxiliar.getProveedoresFromUsuario
 import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
 import com.example.gestoradetfg.Utils.Auxiliar.listaProductoPedido
+import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -36,9 +39,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+        listaProveedores = arrayListOf()
         listaProductoPedido = arrayListOf()
         listaPedidos = arrayListOf()
-        getPedidos("id Usuario")
+
+        getProveedoresFromUsuario("Correo")
         irLogin("", ProviderType.GOOGLE, true, true)
 
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
@@ -77,12 +82,10 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Salva", "La cuenta que recoge es:" +account.id)
 
                 if (account != null) {
-                    val credential: AuthCredential=
-                        GoogleAuthProvider.getCredential(account.idToken, null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential)
-                        .addOnCompleteListener {
+                    val credential: AuthCredential= GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                             if (it.isSuccessful) {
-                                db.collection("users").document(account.email.toString()).get()
+                                db.collection(COLECCION_USUARIO).document(account.email.toString()).get()
                                     .addOnSuccessListener {
 
                                     }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity
+import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.Auxiliar
 import com.example.gestoradetfg.Utils.Auxiliar.listaProductos
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -52,8 +53,8 @@ class ProductoFragment : Fragment() {
 
         recyclerProducto.setHasFixedSize(true)
         recyclerProducto.layoutManager = LinearLayoutManager(view.context)
-        Auxiliar.miAdapterProducto = RecyclerProducto (UsuarioActivity.conLoginAdmin, listaProductos)
-        recyclerProducto.adapter =Auxiliar.miAdapterProducto
+        Auxiliar.adapterProducto = RecyclerProducto (conUsuarioActivity, listaProductos)
+        recyclerProducto.adapter =Auxiliar.adapterProducto
 
         btnAddProducto.setOnClickListener({
 

@@ -53,7 +53,7 @@
             app:layout_constraintVertical_bias="0.2" />
 
         <View
-            android:id="@+id/divider"
+            android:id="@+id/divider_pedido"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?android:attr/listDivider"

@@ -17,7 +17,7 @@ import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
 
 class UsuarioActivity : AppCompatActivity() {
     companion object {
-        lateinit var conLoginAdmin : AppCompatActivity
+        lateinit var conUsuarioActivity : AppCompatActivity
     }
 
     private lateinit var binding: ActivityUsuarioBinding
@@ -26,12 +26,13 @@ class UsuarioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-        conLoginAdmin = this
+        conUsuarioActivity = this
         listaPedidos = arrayListOf()
         listaProveedores = arrayListOf()
         listaProductos = arrayListOf()
         listaProductoProveedor = arrayListOf()
         listaProductoPedido = arrayListOf()
+
 
         // Codigo generado por los fragments
         binding=ActivityUsuarioBinding.inflate(layoutInflater)

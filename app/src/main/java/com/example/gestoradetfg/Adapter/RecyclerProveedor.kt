@@ -37,7 +37,7 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val nombre = view.findViewById<TextView>(R.id.t_ped_proveedor_card)
+        val nombre = view.findViewById<TextView>(R.id.txtCardProvNombre)
 
 
 

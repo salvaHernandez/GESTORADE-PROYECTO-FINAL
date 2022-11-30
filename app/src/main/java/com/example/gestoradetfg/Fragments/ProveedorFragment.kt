@@ -6,21 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Adapter.RecyclerProveedor
-import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity
-import com.example.gestoradetfg.Utils.Auxiliar
-import com.example.gestoradetfg.Utils.Auxiliar.getProveedores
+import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
-import com.example.gestoradetfg.Utils.Auxiliar.miAdapterProveedor
-import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
+import com.example.gestoradetfg.Utils.Auxiliar.adapterProveedor
 import com.example.gestoradetfg.databinding.FragmentProveedorBinding
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_proveedor.*
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,15 +42,6 @@ class ProveedorFragment : Fragment() {
             param1=it.getString(ARG_PARAM1)
             param2=it.getString(ARG_PARAM2)
 
-
-
-            bindingProv = FragmentProveedorBinding.inflate(layoutInflater)
-
-            bindingProv.etFilterProveedor.addTextChangedListener { userFilter ->
-                val proveedorFiltered = listaProveedores.filter { prov -> prov.nombre.lowercase().contains(userFilter.toString().lowercase()) }
-                miAdapterProveedor.updateProveedores(proveedorFiltered)
-            }
-
         }
     }
 
@@ -59,23 +49,61 @@ class ProveedorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        bindingProv = FragmentProveedorBinding.inflate(layoutInflater)
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_proveedor, container, false)
+        return bindingProv.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        getProveedores()
         recyclerProveedor.setHasFixedSize(true)
         recyclerProveedor.layoutManager = LinearLayoutManager(view.context)
-        miAdapterProveedor = RecyclerProveedor (UsuarioActivity.conLoginAdmin, listaProveedores)
-        recyclerProveedor.adapter = miAdapterProveedor
+        adapterProveedor = RecyclerProveedor (conUsuarioActivity, listaProveedores)
+        recyclerProveedor.adapter = adapterProveedor
+
+        bindingProv.etFilterProveedor.addTextChangedListener { userFilter ->
+
+            val proveedorFiltered = listaProveedores.filter { proveedor -> proveedor.nombre.lowercase().contains(userFilter.toString().lowercase()) }
+            adapterProveedor.updateProveedores(proveedorFiltered)
+
+        }
+
+        bindingProv.btnAddProveedor.onFocusChangeListener
+
+        bindingProv.btnAddProveedor.setOnFocusChangeListener { v, hasFocus ->
+            Log.e("Salva", "EL FOCO EL FOCO!!!")
+
+            if (hasFocus) {
+                bindingProv.btnAddProveedor.hide()
+            } else {
+                bindingProv.btnAddProveedor.show()
+
+            }
+        }
+
+        bindingProv.btnAddProveedor.setOnClickListener {
+            val builder = AlertDialog.Builder(conUsuarioActivity)
+            val view = layoutInflater.inflate(R.layout.formulario_proveedor, null)
+
+            builder.setView(view)
+            val dialog = builder.create()
+            dialog.show()
+
+        }
+
+    }
 
 
+    private fun cambiaFoco(hasFocus: Boolean) {
+        Toast.makeText(conUsuarioActivity, "Foco", Toast.LENGTH_SHORT).show()
 
+        if (hasFocus) {
+
+        } else {
+        }
     }
 
     companion object {

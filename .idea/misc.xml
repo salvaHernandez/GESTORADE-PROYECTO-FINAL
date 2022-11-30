@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/diseno_formulario.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_add.xml" value="0.3828125" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.3828125" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3828125" />
@@ -15,9 +16,10 @@
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_login.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_main.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_usuario.xml" value="0.25625" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/formulario_proveedor.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_home.xml" value="0.25625" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_producto.xml" value="0.2515625" />
-        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_proveedor.xml" value="0.2515625" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_proveedor.xml" value="0.25" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_prueba.xml" value="0.25625" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_usuario.xml" value="0.25625" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/pedido_card.xml" value="0.35260416666666666" />
