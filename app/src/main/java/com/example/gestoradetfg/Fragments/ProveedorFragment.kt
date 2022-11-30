@@ -71,18 +71,7 @@ class ProveedorFragment : Fragment() {
 
         }
 
-        bindingProv.btnAddProveedor.onFocusChangeListener
 
-        bindingProv.btnAddProveedor.setOnFocusChangeListener { v, hasFocus ->
-            Log.e("Salva", "EL FOCO EL FOCO!!!")
-
-            if (hasFocus) {
-                bindingProv.btnAddProveedor.hide()
-            } else {
-                bindingProv.btnAddProveedor.show()
-
-            }
-        }
 
         bindingProv.btnAddProveedor.setOnClickListener {
             val builder = AlertDialog.Builder(conUsuarioActivity)

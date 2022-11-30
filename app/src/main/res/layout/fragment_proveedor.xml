@@ -15,24 +15,24 @@
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginBottom="40dp"
         android:imeOptions="actionDone"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="+@id/rgFiltros"
+        app:layout_constraintBottom_toTopOf="@+id/chck2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProveedor"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="650dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rgFiltros"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,47 +49,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.905" />
 
-    <RadioGroup
-        android:id="@+id/rgFiltros"
-        android:layout_width="0dp"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="80dp" />
+
+
+    <CheckBox
+        android:id="@+id/chck1"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerProveedor"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Favoritos"
+        android:layout_marginStart="70dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/chck2"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"/>
+
+    <CheckBox
+        android:id="@+id/chck2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Envio 48 h"
         app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"
-        app:layout_constraintVertical_bias="0.76">
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/chck1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal">
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:transformPivotX="40dp"
+        android:scaleX="0.5"
+        android:scaleY="0.7"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chck2"
+        app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"/>
 
-            <CheckBox
-                android:id="@+id/chck1"
-                android:text="Favoritos"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <CheckBox
-                android:id="@+id/chck2"
-                android:text="Envio 48 h"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_height="wrap_content"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
-                android:layout_weight="1.5"/>
-
-
-        </LinearLayout>
-
-
-    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
