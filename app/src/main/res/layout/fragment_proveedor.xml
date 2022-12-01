@@ -59,26 +59,26 @@
 
 
     <CheckBox
-        android:id="@+id/chck1"
+        android:id="@+id/prov_checkFav"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="@string/favoritos"
         android:layout_marginStart="70dp"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/chck2"
+        app:layout_constraintEnd_toStartOf="@+id/prov_checkEnvio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"/>
 
     <CheckBox
-        android:id="@+id/chck2"
+        android:id="@+id/prov_checkEnvio"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="@string/tiempoEnvio"
         app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/ratingBar"
-        app:layout_constraintStart_toEndOf="@+id/chck1" />
+        app:layout_constraintStart_toEndOf="@+id/prov_checkFav" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -89,7 +89,7 @@
         android:scaleY="0.7"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chck2"
+        app:layout_constraintStart_toEndOf="@+id/prov_checkEnvio"
         app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"/>
 
 

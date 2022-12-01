@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
-import com.example.gestoradetfg.databinding.ProveedorCardBinding
 
-private lateinit var bindingProv: ProveedorCardBinding
 
 class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
 

@@ -7,8 +7,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
-import com.example.gestoradetfg.Utils.Auxiliar
-import com.example.gestoradetfg.Utils.Auxiliar.getPedidos
 import com.example.gestoradetfg.Utils.Auxiliar.getProveedoresFromUsuario
 import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
 import com.example.gestoradetfg.Utils.Auxiliar.listaProductoPedido
@@ -42,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         listaProveedores = arrayListOf()
         listaProductoPedido = arrayListOf()
         listaPedidos = arrayListOf()
-
         getProveedoresFromUsuario("Correo")
         irLogin("", ProviderType.GOOGLE, true, true)
 

@@ -21,6 +21,7 @@ object Auxiliar {
     lateinit var adapterProducto: RecyclerProducto
     lateinit var listaPedidos: ArrayList<Pedido>
     lateinit var listaProveedores: ArrayList<Proveedor>
+
     lateinit var listaProductos: ArrayList<Producto>
     lateinit var listaProductoProveedor: ArrayList<Producto>
     lateinit var listaProductoPedido: ArrayList<Producto>
