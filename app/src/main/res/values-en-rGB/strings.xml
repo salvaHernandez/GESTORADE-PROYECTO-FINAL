@@ -18,6 +18,8 @@
     <string name="email">Email</string>
     <string name="telefono">Phone</string>
     <string name="observaciones">Observations</string>
+    <string name="favoritos">Favorites</string>
+    <string name="tiempoEnvio">Shipping 48h</string>
 
 
     <string name="StrCheckSesion">Keep me signed in</string>

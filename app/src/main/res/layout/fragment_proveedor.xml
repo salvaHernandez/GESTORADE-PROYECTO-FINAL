@@ -32,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -61,7 +62,7 @@
         android:id="@+id/chck1"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Favoritos"
+        android:text="@string/favoritos"
         android:layout_marginStart="70dp"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
@@ -73,7 +74,7 @@
         android:id="@+id/chck2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Envio 48 h"
+        android:text="@string/tiempoEnvio"
         app:layout_constraintTop_toBottomOf="@+id/etFilterProveedor"
         app:layout_constraintBottom_toBottomOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/ratingBar"

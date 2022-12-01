@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/diseno_formulario">
+    android:layout_height="match_parent">
 
     <EditText
 
-        android:id="@+id/et_prov_nombre"
+        android:id="@+id/et_prod_nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <EditText
-        android:id="@+id/et_prov_direccion"
+        android:id="@+id/et_prod_direccion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -32,11 +32,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.15" />
 
     <EditText
-        android:id="@+id/et_prov_email"
+        android:id="@+id/et_prod_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -46,11 +46,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.3" />
 
     <EditText
-        android:id="@+id/et_prov_telefono"
+        android:id="@+id/et_prod_telefono"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -60,11 +60,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.45" />
 
     <EditText
-        android:id="@+id/et_prov_observaciones"
+        android:id="@+id/et_prod_observaciones"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.6" />
 
     <Button
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.85"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="564dp" />
@@ -102,10 +102,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_prov_nombre"
+        app:layout_constraintTop_toTopOf="@+id/et_prod_nombre"
         app:layout_constraintVertical_bias="0.85"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="564dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@
         <activity
             android:name=".UsuarioActivity"
             android:exported="true"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_usuario" />
         <activity
             android:name=".MainActivity"

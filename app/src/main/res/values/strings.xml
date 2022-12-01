@@ -17,6 +17,8 @@
     <string name="email">Email</string>
     <string name="telefono">Telefono</string>
     <string name="observaciones">Observaciones</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="tiempoEnvio">Envio 48 h</string>
 
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
     <string name="smsBienvenida">Pedidos pendientes de recibir</string>

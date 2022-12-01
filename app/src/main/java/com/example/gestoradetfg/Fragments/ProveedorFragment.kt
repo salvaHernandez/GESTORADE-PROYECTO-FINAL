@@ -65,12 +65,12 @@ class ProveedorFragment : Fragment() {
         recyclerProveedor.adapter = adapterProveedor
 
         bindingProv.etFilterProveedor.addTextChangedListener { userFilter ->
+            bindingProv.btnAddProveedor.hide()
 
             val proveedorFiltered = listaProveedores.filter { proveedor -> proveedor.nombre.lowercase().contains(userFilter.toString().lowercase()) }
             adapterProveedor.updateProveedores(proveedorFiltered)
 
         }
-
 
 
         bindingProv.btnAddProveedor.setOnClickListener {
@@ -85,7 +85,7 @@ class ProveedorFragment : Fragment() {
 
     }
 
-
+/*
     private fun cambiaFoco(hasFocus: Boolean) {
         Toast.makeText(conUsuarioActivity, "Foco", Toast.LENGTH_SHORT).show()
 
@@ -94,6 +94,8 @@ class ProveedorFragment : Fragment() {
         } else {
         }
     }
+
+ */
 
     companion object {
         /**
