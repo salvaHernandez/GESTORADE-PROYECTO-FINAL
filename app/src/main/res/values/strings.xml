@@ -7,19 +7,36 @@
     <string name="btnEntrarGoogle">Entrar con Google</string>
     <string name="salir">Salir</string>
     <string name="enviar">Enviar</string>
+    <string name="crear">Crear</string>
     <string name="reiniciar">Reiniciar</string>
     <string name="generarUser">Generar Usuario</string>
     <string name="registrar">Registrar</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="nombre">Nombre</string>
-    <string name="direccion">Dirección</string>
-    <string name="email">Email</string>
-    <string name="telefono">Telefono</string>
-    <string name="observaciones">Observaciones</string>
+
+
+    <string name="nombre">Nombre *:</string>
+    <string name="direccion">Dirección *:</string>
+    <string name="email">Email *:</string>
+    <string name="telefono">Telefono *:</string>
+    <string name="observaciones">Observaciones :</string>
+
+    <string name="proveedor">Proveedor *:</string>
+    <string name="precio">Precio *:</string>
+    <string name="calidad">Calidad *:</string>
+    <string name="tipoVentaForm">Tipo venta *:</string>
+
+    <string-array name="arrayTipoVentas">
+        <item></item>
+        <item>Unidad</item>
+        <item>Peso</item>
+    </string-array>
+
     <string name="favoritos">Favoritos</string>
     <string name="tiempoEnvio">Envio 48 h</string>
+    <string name="tipoVenta">Tipo venta</string>
 
+    <string name="err_camposVacios">Rellena los campos con *</string>
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
     <string name="smsBienvenida">Pedidos pendientes de recibir</string>
     <string name="txtMostrarTodos">Mostrar tambien los pedidos recibidos</string>

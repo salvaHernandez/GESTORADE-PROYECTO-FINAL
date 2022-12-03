@@ -27,11 +27,6 @@ class UsuarioActivity : AppCompatActivity() {
 
 
         conUsuarioActivity = this
-        listaPedidos = arrayListOf()
-        listaProveedores = arrayListOf()
-        listaProductos = arrayListOf()
-        listaProductoProveedor = arrayListOf()
-        listaProductoPedido = arrayListOf()
 
 
         // Codigo generado por los fragments

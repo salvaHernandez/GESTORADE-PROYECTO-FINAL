@@ -8,20 +8,38 @@
     <string name="btnEntrarGoogle">Login with Google</string>
     <string name="salir">Exit</string>
     <string name="enviar">Send</string>
+    <string name="crear">Create</string>
     <string name="reiniciar">Restart</string>
     <string name="generarUser">Generate User</string>
     <string name="registrar">Register</string>
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
-    <string name="nombre">Name</string>
-    <string name="direccion">Address</string>
-    <string name="email">Email</string>
-    <string name="telefono">Phone</string>
-    <string name="observaciones">Observations</string>
+
+
+    <string name="nombre">Name *:</string>
+    <string name="direccion">Address *:</string>
+    <string name="email">Email *:</string>
+    <string name="telefono">Phone *:</string>
+    <string name="observaciones">Observations :</string>
+
+
+    <string name="proveedor">Provider *:</string>
+    <string name="precio">Price *:</string>
+    <string name="calidad">Quality *:</string>
+    <string name="tipoVentaForm">Sale type *:</string>
+
+
+    <string-array name="arrayTipoVentas">
+        <item></item>
+        <item>Unit</item>
+        <item>Weight</item>
+    </string-array>
+
     <string name="favoritos">Favorites</string>
     <string name="tiempoEnvio">Shipping 48h</string>
+    <string name="tipoVenta">Sale type</string>
 
-
+    <string name="err_camposVacios">Fill in the fields with *</string>
     <string name="StrCheckSesion">Keep me signed in</string>
     <string name="smsBienvenida">Orders pending receipt</string>
     <string name="txtMostrarTodos">Also show received orders</string>

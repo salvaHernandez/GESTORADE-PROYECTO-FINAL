@@ -19,13 +19,21 @@ object Auxiliar {
     lateinit var adapterPedido: RecyclerHomePedido
     lateinit var adapterProveedor: RecyclerProveedor
     lateinit var adapterProducto: RecyclerProducto
+
     lateinit var listaPedidos: ArrayList<Pedido>
     lateinit var listaProveedores: ArrayList<Proveedor>
-
     lateinit var listaProductos: ArrayList<Producto>
     lateinit var listaProductoProveedor: ArrayList<Producto>
     lateinit var listaProductoPedido: ArrayList<Producto>
 
+
+    fun initListas () {
+        listaProveedores = arrayListOf()
+        listaPedidos = arrayListOf()
+        listaProductos = arrayListOf()
+        listaProductoProveedor = arrayListOf()
+        listaProductoPedido = arrayListOf()
+    }
 
     fun getPedidos(idUsuario: String) {
         var pedido: Pedido
@@ -50,14 +58,6 @@ object Auxiliar {
 
                             for (doc_producto in r_producto) {
 
-                                Log.e("Salva", "Producto:  " + doc_producto.id)
-                                Log.e("Salva", doc_producto.get(PROD_NOMBRE) as String)
-                                Log.e("Salva", doc_producto.get(PROD_PRECIO).toString())
-                                Log.e("Salva", doc_producto.get(PROD_CALIDAD).toString())
-                                Log.e("Salva", doc_producto.get(PROD_TIPO_VENTA).toString())
-                                Log.e("Salva", doc_producto.get(PROD_PED_CANTIDAD).toString())
-
-
                                 // Creamos el objeto producto
                                 producto=Producto(
                                     doc_producto.id,
@@ -67,16 +67,9 @@ object Auxiliar {
                                     doc_producto.get(PROD_TIPO_VENTA) as Boolean,
                                     doc_producto.get(PROD_PED_CANTIDAD) as Double
                                 )
-                                // Lo añadimos a la lista
+                                // Lo añadimos a la lista que añadimos al proveedor
                                 listaProductoPedido.add(producto)
                             }
-                            Log.e("Salva", "Pedido:  " + doc_pedido.id)
-                            Log.e("Salva", doc_pedido.get(PED_USUARIO) as String)
-                            Log.e("Salva", doc_pedido.get(PED_PROVEEDOR) as String)
-                            Log.e("Salva", doc_pedido.get(PED_DIRECCION) as String)
-                            Log.e("Salva", doc_pedido.get(PED_PRECIO).toString())
-                            Log.e("Salva", doc_pedido.get(PED_TIEMPO_ENVIO).toString())
-                            Log.e("Salva", doc_pedido.get(PED_RECIBIDO).toString())
 
                             // Creamos el pedido
                             pedido=Pedido(
@@ -102,11 +95,10 @@ object Auxiliar {
             }.addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Coleccion: " + COLECCION_PEDIDO + " Error: ", exception)
             }
-        Log.e("Salva", listaPedidos.toString())
     }
 
 
-    fun getProveedoresFromUsuario(idUsuario: String) {
+    fun getProveedores(idUsuario: String) {
         var proveedor: Proveedor
         var producto: Producto
 
@@ -119,6 +111,8 @@ object Auxiliar {
                 // Bucle que recorre cada proveedor
                 for (doc_proveedor in r_proveedor) {
 
+                    listaProductoProveedor.clear()
+
                     // Llamada a la bd que recoge todos los productos de el proveedor
                     db.collection(COLECCION_USUARIO).document(idUsuario)
                         .collection(COLECCION_PROVEEDOR).document(doc_proveedor.id)
@@ -127,14 +121,6 @@ object Auxiliar {
 
                             // Bucle que recorre cada producto
                             for (doc_producto in r_productos) {
-
-                                Log.e("Salva", "Producto del Proveedor:  " + doc_producto.id)
-                                Log.e("Salva", doc_producto.get(PROD_NOMBRE) as String)
-                                Log.e("Salva", doc_producto.get(PROD_PRECIO).toString())
-                                Log.e("Salva", doc_producto.get(PROD_CALIDAD).toString())
-                                Log.e("Salva", doc_producto.get(PROD_TIPO_VENTA).toString())
-                                Log.e("Salva", doc_producto.get(PROD_PED_CANTIDAD).toString())
-
 
                                 // Creamos el producto
                                 producto=Producto(
@@ -145,19 +131,13 @@ object Auxiliar {
                                     doc_producto.get(PROD_TIPO_VENTA) as Boolean,
                                     0.0
                                 )
+
+                                // Añadimos el producto a la lista de todos los productos
+                                listaProductos.add(producto)
+
                                 // Guardamos el producto en una lista
                                 listaProductoProveedor.add(producto)
                             }
-
-                            Log.e("Salva", "Proveedor:  " + doc_proveedor.id)
-                            Log.e("Salva", doc_proveedor.get(PROV_NOMBRE) as String)
-                            Log.e("Salva", doc_proveedor.get(PROV_DIRECCION) as String)
-                            Log.e("Salva", doc_proveedor.get(PROV_EMAIL) as String)
-                            Log.e("Salva", doc_proveedor.get(PROV_TELEFONO).toString())
-                            Log.e("Salva", doc_proveedor.get(PROV_TIEMPO_ENVIO).toString())
-                            Log.e("Salva", doc_proveedor.get(PROV_VALORACION).toString())
-                            Log.e("Salva", doc_proveedor.get(PROV_OBSERVACIONES).toString())
-                            Log.e("Salva", listaProductoProveedor.toString())
 
                             // Creamos el proveedor y le añadimos su lista de productos anteriormente creada
                             proveedor=Proveedor(
@@ -217,7 +197,7 @@ object Auxiliar {
     fun modProveedor(proveedor: Proveedor, context: Context) {
         var proveedorData=hashMapOf(
             PROV_DIRECCION to proveedor.direccion,
-            PROV_EMAIL to proveedor.emai,
+            PROV_EMAIL to proveedor.email,
             PROV_NOMBRE to proveedor.nombre,
             PROV_OBSERVACIONES to proveedor.observaciones,
             PROV_TELEFONO to proveedor.telefono,
@@ -239,7 +219,7 @@ object Auxiliar {
 
         var proveedorData=hashMapOf(
             PROV_DIRECCION to proveedor.direccion,
-            PROV_EMAIL to proveedor.emai,
+            PROV_EMAIL to proveedor.email,
             PROV_NOMBRE to proveedor.nombre,
             PROV_OBSERVACIONES to proveedor.observaciones,
             PROV_TELEFONO to proveedor.telefono,
@@ -247,12 +227,14 @@ object Auxiliar {
             PROV_VALORACION to proveedor.valoracion
         )
 
-        db.collection(COLECCION_PROVEEDOR).add(proveedorData).addOnSuccessListener {
+        db.collection(COLECCION_USUARIO).document("Correo").collection(COLECCION_PROVEEDOR).add(proveedorData).addOnSuccessListener {
             Toast.makeText(context, R.string.msgProveedorCrearSucc, Toast.LENGTH_SHORT).show()
 
         }.addOnFailureListener {
             Toast.makeText(context, R.string.msgProveedorCrearNoSucc, Toast.LENGTH_SHORT).show()
         }
+
+
 
     }
 

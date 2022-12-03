@@ -6,16 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerProveedor
+import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
+import com.example.gestoradetfg.Utils.Auxiliar
 import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
 import com.example.gestoradetfg.Utils.Auxiliar.adapterProveedor
+import com.example.gestoradetfg.Utils.Auxiliar.addProveedor
+import com.example.gestoradetfg.databinding.FormularioProveedorBinding
 import com.example.gestoradetfg.databinding.FragmentProveedorBinding
 import kotlinx.android.synthetic.main.fragment_proveedor.*
 
@@ -24,8 +30,15 @@ import kotlinx.android.synthetic.main.fragment_proveedor.*
 private const val ARG_PARAM1="param1"
 private const val ARG_PARAM2="param2"
 private lateinit var bindingProv: FragmentProveedorBinding
+private lateinit var bindingFormulario: FormularioProveedorBinding
 private lateinit var filtroTxt : String
-private lateinit var listaFiltrada : List<Proveedor>
+private lateinit var listaFiltradaProveedores : List<Proveedor>
+
+lateinit var form_nombre : EditText
+lateinit var form_direccion : EditText
+lateinit var form_email : EditText
+lateinit var form_telefono : EditText
+lateinit var form_observaciones : EditText
 /**
  * A simple [Fragment] subclass.
  * Use the [ProveedorFragment.newInstance] factory method to
@@ -36,6 +49,8 @@ class ProveedorFragment : Fragment() {
     private var param1: String?=null
     private var param2: String?=null
     private var filtroStar : Double= 0.0
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,21 +102,61 @@ class ProveedorFragment : Fragment() {
 
 
         bindingProv.btnAddProveedor.setOnClickListener {
+
             val builder = AlertDialog.Builder(conUsuarioActivity)
             val view = layoutInflater.inflate(R.layout.formulario_proveedor, null)
+            builder.setTitle("Registro Proveedor")
+
+            form_nombre = view.findViewById(R.id.f_et_prov_nombre)
+            form_direccion = view.findViewById(R.id.f_et_prov_direccion)
+            form_email = view.findViewById(R.id.f_et_prov_email)
+            form_telefono = view.findViewById(R.id.f_et_prov_telefono)
+            form_observaciones = view.findViewById(R.id.f_et_prov_observaciones)
 
             builder.setView(view)
-            val dialog = builder.create()
-            dialog.show()
+            builder.setPositiveButton(R.string.crear ) {view, _  ->
+
+                if (validaCampos()) {
+                    addProveedor(creaProveedor(), conUsuarioActivity)
+                } else {
+                    Toast.makeText(conUsuarioActivity, R.string.err_camposVacios, Toast.LENGTH_SHORT).show()
+                }
+            }
+            builder.setNegativeButton(R.string.cancelar) { view, _ ->
+
+            }
+            builder.show()
 
         }
+
+    }
+
+    private fun validaCampos(): Boolean {
+        var camposValidos = false
+
+        if (form_nombre.text.toString().trim() != "" &&
+            form_direccion.text.toString().trim() != "" &&
+            form_email.text.toString().trim() != "" &&
+            form_telefono.text.toString().trim() != "") {
+            camposValidos = true
+        }
+        return camposValidos
+    }
+
+
+    private fun creaProveedor() : Proveedor {
+
+        var list: ArrayList<Producto>
+        list = arrayListOf()
+
+        return Proveedor("1", form_nombre.text.toString(), form_direccion.text.toString(), form_email.text.toString(),
+            form_telefono.text.toString().toLong() , 0, 0, form_observaciones.text.toString(), list )
 
     }
 
     private fun filtraLista () {
 
         val opcion = determinaFiltro()
-        Log.e("Salva", "Opcion filtro: " + opcion.toString())
 
         when (opcion) {
             1 -> filtraPorFav()
@@ -110,55 +165,47 @@ class ProveedorFragment : Fragment() {
             4 -> filtraTxt()
             else -> Toast.makeText(conUsuarioActivity, "Ha fallado el filtro", Toast.LENGTH_SHORT).show()
         }
-        adapterProveedor.updateProveedores(listaFiltrada)
+        adapterProveedor.updateProveedores(listaFiltradaProveedores)
     }
 
     private fun filtraTxt() {
 
-        listaFiltrada = listaProveedores.filter { proveedor ->
+        listaFiltradaProveedores = listaProveedores.filter { proveedor ->
             proveedor.nombre.lowercase().contains(filtroTxt.lowercase()) &&
             proveedor.valoracion >= filtroStar
         }
-        Log.e("Salva", "Entra metodo filtraTxt")
-        Log.e("Salva", "lista con el filtro: " +listaFiltrada.toString())
     }
 
     private fun filtraTodo() {
 
 
-        listaFiltrada = listaProveedores.filter { proveedor ->
+        listaFiltradaProveedores = listaProveedores.filter { proveedor ->
             proveedor.nombre.lowercase().contains(filtroTxt.lowercase()) &&
                     proveedor.valoracion >= filtroStar &&
                     (bindingProv.provCheckEnvio.isChecked && proveedor.tiempoEnvio < 3) &&
                     (bindingProv.provCheckFav.isChecked && proveedor.tiempoEnvio < 3)
 
         }
-        Log.e("Salva", "Entra metodo filtraTodo")
-        Log.e("Salva", "lista con el filtro: " +listaFiltrada.toString())
     }
 
     private fun filtraPorEnvio() {
 
 
-        listaFiltrada = listaProveedores.filter { proveedor ->
+        listaFiltradaProveedores = listaProveedores.filter { proveedor ->
             proveedor.nombre.lowercase().contains(filtroTxt.lowercase()) &&
                     proveedor.valoracion >= filtroStar &&
                     (bindingProv.provCheckEnvio.isChecked && proveedor.tiempoEnvio < 3)
 
         }
-        Log.e("Salva", "Entra metodo filtraPorEnvio")
-        Log.e("Salva", "lista con el filtro: " +listaFiltrada.toString())
     }
 
     private fun filtraPorFav() {
-        listaFiltrada = listaProveedores.filter { proveedor ->
+        listaFiltradaProveedores = listaProveedores.filter { proveedor ->
             proveedor.nombre.lowercase().contains(filtroTxt.lowercase()) &&
                     proveedor.valoracion >= filtroStar &&
                     (bindingProv.provCheckFav.isChecked && proveedor.tiempoEnvio < 3)
 
         }
-        Log.e("Salva", "Entra metodo filtraPorFav")
-        Log.e("Salva", "lista con el filtro: " +listaFiltrada.toString())
     }
 
     private fun determinaFiltro(): Int {

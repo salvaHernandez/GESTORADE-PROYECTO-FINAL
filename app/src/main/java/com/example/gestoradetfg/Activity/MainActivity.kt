@@ -7,10 +7,8 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
-import com.example.gestoradetfg.Utils.Auxiliar.getProveedoresFromUsuario
-import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
-import com.example.gestoradetfg.Utils.Auxiliar.listaProductoPedido
-import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
+import com.example.gestoradetfg.Utils.Auxiliar.getProveedores
+import com.example.gestoradetfg.Utils.Auxiliar.initListas
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -37,10 +35,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
-        listaProveedores = arrayListOf()
-        listaProductoPedido = arrayListOf()
-        listaPedidos = arrayListOf()
-        getProveedoresFromUsuario("Correo")
+
+        initListas()
+        getProveedores("Correo")
         irLogin("", ProviderType.GOOGLE, true, true)
 
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.

@@ -6,7 +6,7 @@ import java.io.Serializable
 data class Proveedor(var id : String,
                      var nombre: String,
                      var direccion:String,
-                     var emai: String,
+                     var email: String,
                      var telefono: Long,
                      var tiempoEnvio: Long,
                      var valoracion: Long,
