@@ -15,10 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GESTORADETFG">
         <activity
+            android:name=".pedidoActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
             android:name=".UsuarioActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/title_activity_usuario" />
+            android:label="@string/title_activity_usuario"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

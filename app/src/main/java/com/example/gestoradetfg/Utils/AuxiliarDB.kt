@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gestoradetfg.*
+import com.example.gestoradetfg.Adapter.RecyclerAddPedido
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.Adapter.RecyclerProveedor
@@ -24,6 +25,7 @@ object AuxiliarDB {
     lateinit var adapterPedido: RecyclerHomePedido
     lateinit var adapterProveedor: RecyclerProveedor
     lateinit var adapterProducto: RecyclerProducto
+    lateinit var adapterAddPedido: RecyclerAddPedido
 
     lateinit var listaPedidos: ArrayList<Pedido>
     lateinit var listaProveedores: ArrayList<Proveedor>
@@ -39,6 +41,7 @@ object AuxiliarDB {
         listaProductoProveedor=arrayListOf()
         listaProductoPedido=arrayListOf()
     }
+
 
     fun getPedidos(idUsuario: String) {
         var pedido: Pedido

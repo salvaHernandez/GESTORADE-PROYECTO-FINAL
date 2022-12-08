@@ -23,6 +23,8 @@
     <string name="telefono">Phone *:</string>
     <string name="observaciones">Observations :</string>
     <string name="tiempoEnvioProv">Shipping time *:</string>
+    <string name="msgCardEnvio">Shipping in:</string>
+    <string name="dia">Day</string>
 
 
 

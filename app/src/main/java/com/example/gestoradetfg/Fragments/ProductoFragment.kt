@@ -153,7 +153,7 @@ class ProductoFragment : Fragment() {
     }
 
     private fun getIdProv(): String {
-        Log.e("Salva", "El id del proveedor seleccionado es: " +listaProveedores[form_proveedor.selectedItemPosition - 1].id)
+        Log.w("Salva", "El id del proveedor seleccionado es: " +listaProveedores[form_proveedor.selectedItemPosition - 1].id)
         return listaProveedores[form_proveedor.selectedItemPosition - 1].id
     }
 

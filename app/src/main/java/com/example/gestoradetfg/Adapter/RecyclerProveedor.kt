@@ -55,6 +55,11 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         val nombre = view.findViewById<TextView>(R.id.txtCardProvNombre)
+        val dir = view.findViewById<TextView>(R.id.txtCardProvDir)
+        val telefono = view.findViewById<TextView>(R.id.txtCardProvTelefono)
+        val envio = view.findViewById<TextView>(R.id.txtCardProvEnvio)
+        val obs = view.findViewById<TextView>(R.id.txtCardProvObservaciones)
+        val msgDia = view.findViewById<TextView>(R.id.txtCardMsg2)
 
 
 
@@ -63,8 +68,14 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
         fun bind(p: Proveedor, context: AppCompatActivity, adaptador: RecyclerProveedor) {
 
 
-            nombre.text = p.nombre
-
+            nombre.text = p.nombre.uppercase()
+            dir.text = p.direccion
+            telefono.text = p.telefono.toString()
+            envio.text = p.tiempoEnvio.toString()
+            obs.text = p.observaciones
+            if (p.tiempoEnvio > 1) {
+                msgDia.append("s")
+            }
 
 
             itemView.setOnClickListener{

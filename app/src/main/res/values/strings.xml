@@ -27,6 +27,8 @@
     <string name="calidad">Calidad :</string>
     <string name="tipoVentaForm">Tipo venta *:</string>
     <string name="tiempoEnvioProv">Tiempo de envio *:</string>
+    <string name="msgCardEnvio">Envio en:</string>
+    <string name="dia">Día</string>
 
 
     <string-array name="arrayTipoVentas">

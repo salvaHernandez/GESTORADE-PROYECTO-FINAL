@@ -27,7 +27,6 @@ import kotlinx.android.synthetic.main.fragment_proveedor.*
 private const val ARG_PARAM1="param1"
 private const val ARG_PARAM2="param2"
 private lateinit var bindingProv: FragmentProveedorBinding
-private lateinit var bindingFormulario: FormularioProveedorBinding
 private lateinit var filtroTxt : String
 private lateinit var listaFiltradaProveedores : List<Proveedor>
 
@@ -55,8 +54,6 @@ class ProveedorFragment : Fragment() {
         arguments?.let {
             param1=it.getString(ARG_PARAM1)
             param2=it.getString(ARG_PARAM2)
-
-
         }
     }
 

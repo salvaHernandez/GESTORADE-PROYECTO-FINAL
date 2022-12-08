@@ -12,10 +12,13 @@
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_producto.xml" value="0.3828125" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_prov_card.xml" value="0.3671875" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/drawable/ic_proveedor.xml" value="0.3828125" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_login.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_main.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_pedido.xml" value="0.360054347826087" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/activity_usuario.xml" value="0.25625" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/add_pedido_card.xml" value="0.360054347826087" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/formulario_pedido.xml" value="0.36367753623188404" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/formulario_producto.xml" value="0.25" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/formulario_proveedor.xml" value="0.33" />
@@ -27,7 +30,8 @@
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/fragment_usuario.xml" value="0.25625" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/pedido_card.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/producto_card.xml" value="0.26145833333333335" />
-        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/proveedor_card.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/proveedor_card.xml" value="0.33" />
+        <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/layout/seleccionar_prov.xml" value="0.35643115942028986" />
         <entry key="..\:/Users/el_sa/Desktop/GESTORADE PROYECTO FINAL/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25625" />
       </map>
     </option>
