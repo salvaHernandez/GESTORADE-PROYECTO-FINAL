@@ -1,12 +1,10 @@
 package com.example.gestoradetfg.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -17,10 +15,9 @@ import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.Auxiliar
-import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
-import com.example.gestoradetfg.Utils.Auxiliar.adapterProveedor
-import com.example.gestoradetfg.Utils.Auxiliar.addProveedor
+import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
+import com.example.gestoradetfg.Utils.AuxiliarDB.adapterProveedor
+import com.example.gestoradetfg.Utils.AuxiliarDB.addProveedor
 import com.example.gestoradetfg.databinding.FormularioProveedorBinding
 import com.example.gestoradetfg.databinding.FragmentProveedorBinding
 import kotlinx.android.synthetic.main.fragment_proveedor.*
@@ -34,11 +31,12 @@ private lateinit var bindingFormulario: FormularioProveedorBinding
 private lateinit var filtroTxt : String
 private lateinit var listaFiltradaProveedores : List<Proveedor>
 
-lateinit var form_nombre : EditText
-lateinit var form_direccion : EditText
-lateinit var form_email : EditText
-lateinit var form_telefono : EditText
-lateinit var form_observaciones : EditText
+private lateinit var form_nombre : EditText
+private lateinit var form_direccion : EditText
+private lateinit var form_email : EditText
+private lateinit var form_telefono : EditText
+private lateinit var form_observaciones : EditText
+private lateinit var form_tiempoEnvio : EditText
 /**
  * A simple [Fragment] subclass.
  * Use the [ProveedorFragment.newInstance] factory method to
@@ -112,12 +110,15 @@ class ProveedorFragment : Fragment() {
             form_email = view.findViewById(R.id.f_et_prov_email)
             form_telefono = view.findViewById(R.id.f_et_prov_telefono)
             form_observaciones = view.findViewById(R.id.f_et_prov_observaciones)
-
+            form_tiempoEnvio = view.findViewById(R.id.f_et_prov_tiempoEnvio)
             builder.setView(view)
+
+
             builder.setPositiveButton(R.string.crear ) {view, _  ->
 
-                if (validaCampos()) {
+                if (validaCamposDialogProv()) {
                     addProveedor(creaProveedor(), conUsuarioActivity)
+
                 } else {
                     Toast.makeText(conUsuarioActivity, R.string.err_camposVacios, Toast.LENGTH_SHORT).show()
                 }
@@ -131,18 +132,19 @@ class ProveedorFragment : Fragment() {
 
     }
 
-    private fun validaCampos(): Boolean {
+
+    fun validaCamposDialogProv(): Boolean {
         var camposValidos = false
 
         if (form_nombre.text.toString().trim() != "" &&
             form_direccion.text.toString().trim() != "" &&
             form_email.text.toString().trim() != "" &&
-            form_telefono.text.toString().trim() != "") {
+            form_telefono.text.toString().trim() != "" &&
+            form_tiempoEnvio.text.toString().trim() != "") {
             camposValidos = true
         }
         return camposValidos
     }
-
 
     private fun creaProveedor() : Proveedor {
 
@@ -150,7 +152,7 @@ class ProveedorFragment : Fragment() {
         list = arrayListOf()
 
         return Proveedor("1", form_nombre.text.toString(), form_direccion.text.toString(), form_email.text.toString(),
-            form_telefono.text.toString().toLong() , 0, 0, form_observaciones.text.toString(), list )
+            form_telefono.text.toString().toLong() , form_tiempoEnvio.text.toString().toLong(), 0, form_observaciones.text.toString(), list )
 
     }
 
@@ -177,8 +179,6 @@ class ProveedorFragment : Fragment() {
     }
 
     private fun filtraTodo() {
-
-
         listaFiltradaProveedores = listaProveedores.filter { proveedor ->
             proveedor.nombre.lowercase().contains(filtroTxt.lowercase()) &&
                     proveedor.valoracion >= filtroStar &&

@@ -1,18 +1,12 @@
 package com.example.gestoradetfg
 
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
-import com.example.gestoradetfg.Utils.Auxiliar.listaProductoPedido
-import com.example.gestoradetfg.Utils.Auxiliar.listaProductoProveedor
-import com.example.gestoradetfg.Utils.Auxiliar.listaProductos
-import com.example.gestoradetfg.Utils.Auxiliar.listaProveedores
 import com.example.gestoradetfg.databinding.ActivityUsuarioBinding
 
 class UsuarioActivity : AppCompatActivity() {

@@ -7,8 +7,8 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
-import com.example.gestoradetfg.Utils.Auxiliar.getProveedores
-import com.example.gestoradetfg.Utils.Auxiliar.initListas
+import com.example.gestoradetfg.Utils.AuxiliarDB.getProveedores
+import com.example.gestoradetfg.Utils.AuxiliarDB.initListas
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         val db = FirebaseFirestore.getInstance()
         val REQUEST_CODE_LOCATION = 0
+        var idUsuarioActivo = ""
 
     }
     private var RC_SIGN_IN = 1
@@ -36,8 +37,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
 
+        idUsuarioActivo = "Correo"
         initListas()
-        getProveedores("Correo")
+        getProveedores()
         irLogin("", ProviderType.GOOGLE, true, true)
 
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.

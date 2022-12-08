@@ -8,6 +8,7 @@
     <string name="salir">Salir</string>
     <string name="enviar">Enviar</string>
     <string name="crear">Crear</string>
+    <string name="modificar">Modificar</string>
     <string name="reiniciar">Reiniciar</string>
     <string name="generarUser">Generar Usuario</string>
     <string name="registrar">Registrar</string>
@@ -23,8 +24,10 @@
 
     <string name="proveedor">Proveedor *:</string>
     <string name="precio">Precio *:</string>
-    <string name="calidad">Calidad *:</string>
+    <string name="calidad">Calidad :</string>
     <string name="tipoVentaForm">Tipo venta *:</string>
+    <string name="tiempoEnvioProv">Tiempo de envio *:</string>
+
 
     <string-array name="arrayTipoVentas">
         <item></item>
@@ -36,6 +39,9 @@
     <string name="tiempoEnvio">Envio 48 h</string>
     <string name="tipoVenta">Tipo venta</string>
 
+
+    <string name="Atencion">Precaución!!</string>
+
     <string name="err_camposVacios">Rellena los campos con *</string>
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
     <string name="smsBienvenida">Pedidos pendientes de recibir</string>
@@ -45,19 +51,23 @@
     <string name="menuProductos">Productos</string>
     <string name="topTittle">Gestion de pedidos</string>
 
+
     <string name="msgPedidoCrearSucc">Pedido realizado Correctamente</string>
     <string name="msgPedidoCrearNoSucc">Problema al realizar el pedido</string>
-
     <string name="msgProveedorCrearSucc">Proveedor creado correctamente</string>
     <string name="msgProveedorCrearNoSucc">Problema al crear el proveedor</string>
     <string name="msgProveedorModSucc">Proveedor modificado correctamente</string>
     <string name="msgProveedorModNoSucc">Proveedor modificado correctamente</string>
+    <string name="msgBorrarProveedor">¿Quieres borrar este proveedor?</string>
+    <string name="msgBorrarProveedorNoSucc">Problema al borrar el proveedor</string>
 
 
     <string name="msgProductoCrearSucc">Producto creado correctamente</string>
     <string name="msgProductoCrearNoSucc">Problema al crear el producto</string>
     <string name="msgProductoModSucc">Producto modificado correctamente</string>
     <string name="msgProductoModNoSucc">Problema al modificar el producto</string>
+    <string name="msgBorrarProducto">¿Quieres borrar este producto?</string>
+    <string name="msgBorrarProductoNosucc">Problema al borrar el producto</string>
 
 
     <string name="open_drawer">Abrir</string>

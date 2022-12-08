@@ -7,7 +7,8 @@ import java.io.Serializable
 data class Producto(var id: String,
                     var nombre : String,
                     var precio : Double,
-                    var calidad : Long,
+                    var calidad : Double,
                     // True = Unidad : False = Peso
                     var tipoVenta : Boolean,
-                    var cantidad : Double): Serializable
+                    var cantidad : Double,
+                    var idProvedoor : String): Serializable

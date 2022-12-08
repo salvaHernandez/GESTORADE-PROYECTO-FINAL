@@ -2,20 +2,25 @@ package com.example.gestoradetfg.Utils
 
 import android.content.ContentValues
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.gestoradetfg.*
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.Adapter.RecyclerProveedor
 import com.example.gestoradetfg.MainActivity.Companion.db
+import com.example.gestoradetfg.MainActivity.Companion.idUsuarioActivo
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
-import com.example.gestoradetfg.Model.Proveedor
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import java.util.HashMap
 
-object Auxiliar {
+import com.example.gestoradetfg.Model.Proveedor
+import kotlinx.android.synthetic.main.fragment_producto.*
+import kotlinx.coroutines.*
+
+object AuxiliarDB {
     lateinit var adapterPedido: RecyclerHomePedido
     lateinit var adapterProveedor: RecyclerProveedor
     lateinit var adapterProducto: RecyclerProducto
@@ -27,12 +32,12 @@ object Auxiliar {
     lateinit var listaProductoPedido: ArrayList<Producto>
 
 
-    fun initListas () {
-        listaProveedores = arrayListOf()
-        listaPedidos = arrayListOf()
-        listaProductos = arrayListOf()
-        listaProductoProveedor = arrayListOf()
-        listaProductoPedido = arrayListOf()
+    fun initListas() {
+        listaProveedores=arrayListOf()
+        listaPedidos=arrayListOf()
+        listaProductos=arrayListOf()
+        listaProductoProveedor=arrayListOf()
+        listaProductoPedido=arrayListOf()
     }
 
     fun getPedidos(idUsuario: String) {
@@ -63,9 +68,10 @@ object Auxiliar {
                                     doc_producto.id,
                                     doc_producto.get(PROD_NOMBRE) as String,
                                     doc_producto.get(PROD_PRECIO) as Double,
-                                    doc_producto.get(PROD_CALIDAD) as Long,
+                                    doc_producto.get(PROD_CALIDAD) as Double,
                                     doc_producto.get(PROD_TIPO_VENTA) as Boolean,
-                                    doc_producto.get(PROD_PED_CANTIDAD) as Double
+                                    doc_producto.get(PROD_PED_CANTIDAD) as Double,
+                                    doc_producto.get(PROD_ID_PROVEEDOR) as String
                                 )
                                 // Lo añadimos a la lista que añadimos al proveedor
                                 listaProductoPedido.add(producto)
@@ -98,14 +104,14 @@ object Auxiliar {
     }
 
 
-    fun getProveedores(idUsuario: String) {
+    fun getProveedores() {
         var proveedor: Proveedor
         var producto: Producto
 
         listaProveedores.clear()
 
         // Llamada a la bd que recoge todos los proveedores de el usuario
-        db.collection(COLECCION_USUARIO).document(idUsuario)
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
             .collection(COLECCION_PROVEEDOR).get().addOnSuccessListener { r_proveedor ->
 
                 // Bucle que recorre cada proveedor
@@ -114,7 +120,7 @@ object Auxiliar {
                     listaProductoProveedor.clear()
 
                     // Llamada a la bd que recoge todos los productos de el proveedor
-                    db.collection(COLECCION_USUARIO).document(idUsuario)
+                    db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
                         .collection(COLECCION_PROVEEDOR).document(doc_proveedor.id)
                         .collection(COLECCION_PRODUCTO).get()
                         .addOnSuccessListener { r_productos ->
@@ -127,9 +133,10 @@ object Auxiliar {
                                     doc_producto.id,
                                     doc_producto.get(PROD_NOMBRE) as String,
                                     doc_producto.get(PROD_PRECIO) as Double,
-                                    doc_producto.get(PROD_CALIDAD) as Long,
+                                    doc_producto.get(PROD_CALIDAD) as Double,
                                     doc_producto.get(PROD_TIPO_VENTA) as Boolean,
-                                    0.0
+                                    0.0,
+                                    doc_proveedor.id
                                 )
 
                                 // Añadimos el producto a la lista de todos los productos
@@ -204,14 +211,16 @@ object Auxiliar {
             PROV_TIEMPO_ENVIO to proveedor.tiempoEnvio,
             PROV_VALORACION to proveedor.valoracion
         )
-        db.collection(COLECCION_PROVEEDOR).document(proveedor.id).set(proveedorData)
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
+            .document(proveedor.id).set(proveedorData)
             .addOnSuccessListener {
-                Toast.makeText(context, R.string.msgProveedorModSucc, Toast.LENGTH_SHORT).show()
+
                 adapterProveedor.notifyDataSetChanged()
+                Toast.makeText(context, R.string.msgProveedorModSucc, Toast.LENGTH_SHORT).show()
 
             }.addOnFailureListener {
-            Toast.makeText(context, R.string.msgProveedorModNoSucc, Toast.LENGTH_SHORT).show()
-        }
+                Toast.makeText(context, R.string.msgProveedorModNoSucc, Toast.LENGTH_SHORT).show()
+            }
     }
 
 
@@ -227,42 +236,27 @@ object Auxiliar {
             PROV_VALORACION to proveedor.valoracion
         )
 
-        db.collection(COLECCION_USUARIO).document("Correo").collection(COLECCION_PROVEEDOR).add(proveedorData).addOnSuccessListener {
-            Toast.makeText(context, R.string.msgProveedorCrearSucc, Toast.LENGTH_SHORT).show()
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
+            .add(proveedorData).addOnSuccessListener { result ->
 
-        }.addOnFailureListener {
-            Toast.makeText(context, R.string.msgProveedorCrearNoSucc, Toast.LENGTH_SHORT).show()
-        }
-
-
-
-    }
-
-
-    fun modProducto(producto: Producto, context: Context) {
-
-        var productoData=hashMapOf(
-            PROD_TIPO_VENTA to producto.tipoVenta,
-            PROD_CALIDAD to producto.calidad,
-            PROD_PRECIO to producto.precio,
-            PROD_NOMBRE to producto.nombre,
-            PROD_PED_CANTIDAD to null,
-        )
-        db.collection(COLECCION_PRODUCTO).document(producto.id).set(productoData)
-            .addOnSuccessListener {
-                Toast.makeText(context, R.string.msgProductoModSucc, Toast.LENGTH_SHORT).show()
+                proveedor.id = result.id
+                listaProveedores.add(proveedor)
+                adapterProveedor.listaProveedores = listaProveedores
                 adapterProveedor.notifyDataSetChanged()
+                Toast.makeText(context, R.string.msgProveedorCrearSucc, Toast.LENGTH_SHORT).show()
 
             }.addOnFailureListener {
-            Toast.makeText(context, R.string.msgProductoModNoSucc, Toast.LENGTH_SHORT).show()
-        }
+                Toast.makeText(context, R.string.msgProveedorCrearNoSucc, Toast.LENGTH_SHORT).show()
+            }
 
     }
 
 
-    fun addProducto(producto: Producto, context: Context) {
 
+
+    fun addProducto(producto: Producto, proveedor: String, context: Context) {
         var productoData=hashMapOf(
+            PROD_ID_PROVEEDOR to producto.idProvedoor,
             PROD_TIPO_VENTA to producto.tipoVenta,
             PROD_CALIDAD to producto.calidad,
             PROD_PRECIO to producto.precio,
@@ -270,17 +264,92 @@ object Auxiliar {
             PROD_PED_CANTIDAD to null,
         )
 
-        db.collection(COLECCION_PEDIDO).add(productoData).addOnSuccessListener {
-            Toast.makeText(context, R.string.msgProductoCrearSucc, Toast.LENGTH_SHORT).show()
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
+            .document(producto.idProvedoor).collection(
+                COLECCION_PRODUCTO
+            ).add(productoData).addOnSuccessListener {
 
-        }.addOnFailureListener {
-            Toast.makeText(context, R.string.msgProductoCrearNoSucc, Toast.LENGTH_SHORT).show()
-        }
+                listaProductos.add(producto)
+                adapterProducto.listaProducto=listaProductos
+                adapterProducto.notifyDataSetChanged()
 
+                Toast.makeText(context, R.string.msgProductoCrearSucc, Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(context, R.string.msgProductoCrearNoSucc, Toast.LENGTH_SHORT).show()
+            }
     }
 
 
-    private fun mapPedido(pedido: Pedido)  {
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun borrarProveedor(p: Proveedor, context: AppCompatActivity) {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(
+            COLECCION_PROVEEDOR
+        ).document(p.id).delete().addOnSuccessListener {
+
+            listaProveedores.remove(p)
+            adapterProveedor.listaProveedores = listaProveedores
+            adapterProveedor.notifyDataSetChanged()
+
+            Log.e("Salva", "ListaProductos :"+listaProductos.toString())
+
+            listaProductos.removeIf { prod -> (prod.idProvedoor == p.id )}
+            Log.e("Salva", "ListaProductos :"+listaProductos.toString())
+        }.addOnFailureListener {
+            Toast.makeText(context, R.string.msgBorrarProveedorNoSucc, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    fun borrarProducto(p: Producto, context: AppCompatActivity) {
+
+
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(
+            COLECCION_PROVEEDOR
+        ).document(p.idProvedoor).collection(COLECCION_PRODUCTO).document(p.id).delete()
+            .addOnSuccessListener {
+
+                listaProductos.remove(p)
+                adapterProducto.listaProducto = listaProductos
+                adapterProducto.notifyDataSetChanged()
+
+            }.addOnFailureListener {
+                Toast.makeText(context, R.string.msgBorrarProveedorNoSucc, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+    }
+
+    fun modProducto(producto: Producto, oldProducto: Producto, context: Context) {
+
+
+        var productoData=hashMapOf(
+            PROD_ID_PROVEEDOR to producto.idProvedoor,
+            PROD_TIPO_VENTA to producto.tipoVenta,
+            PROD_CALIDAD to producto.calidad,
+            PROD_PRECIO to producto.precio,
+            PROD_NOMBRE to producto.nombre,
+            PROD_PED_CANTIDAD to null,
+        )
+
+
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
+            .document(producto.idProvedoor).collection(
+                COLECCION_PRODUCTO
+            ).document(producto.id).set(productoData)
+            .addOnSuccessListener {
+
+                adapterProducto.notifyDataSetChanged()
+                Toast.makeText(context, R.string.msgProductoModSucc, Toast.LENGTH_SHORT).show()
+
+            }.addOnFailureListener {
+                Toast.makeText(context, R.string.msgProductoModNoSucc, Toast.LENGTH_SHORT).show()
+            }
+
+
+    }
+
+    private fun mapPedido(pedido: Pedido) {
 
         var pedidoData=hashMapOf(
             PED_DIRECCION to pedido.direccionDeEnvio,

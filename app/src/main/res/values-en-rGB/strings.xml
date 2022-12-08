@@ -9,6 +9,7 @@
     <string name="salir">Exit</string>
     <string name="enviar">Send</string>
     <string name="crear">Create</string>
+    <string name="modificar">Modify</string>
     <string name="reiniciar">Restart</string>
     <string name="generarUser">Generate User</string>
     <string name="registrar">Register</string>
@@ -21,13 +22,16 @@
     <string name="email">Email *:</string>
     <string name="telefono">Phone *:</string>
     <string name="observaciones">Observations :</string>
+    <string name="tiempoEnvioProv">Shipping time *:</string>
+
 
 
     <string name="proveedor">Provider *:</string>
     <string name="precio">Price *:</string>
-    <string name="calidad">Quality *:</string>
+    <string name="calidad">Quality :</string>
     <string name="tipoVentaForm">Sale type *:</string>
 
+    <string name="Atencion">Caution!!</string>
 
     <string-array name="arrayTipoVentas">
         <item></item>
@@ -56,12 +60,16 @@
     <string name="msgProveedorCrearNoSucc">Problem creating provider</string>
     <string name="msgProveedorModSucc">Provider modifield successfully</string>
     <string name="msgProveedorModNoSucc">Problem modifying provider</string>
+    <string name="msgBorrarProveedor">Do you want to delete this provider?</string>
+    <string name="msgBorrarProveedorNoSucc">Problem deleting provider</string>
 
 
     <string name="msgProductoCrearSucc">Product created successfully</string>
     <string name="msgProductoCrearNoSucc">Problem creating the product</string>
     <string name="msgProductoModSucc">Product modifield successfully</string>
     <string name="msgProductoModNoSucc">Problem modifying the product</string>
+    <string name="msgBorrarProducto">Do you want to delete this product?</string>
+    <string name="msgBorrarProductoNosucc">Problem deleting the product</string>
 
 
 

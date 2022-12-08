@@ -23,6 +23,7 @@ val PROD_CALIDAD = "calidad"
 val PROD_PRECIO = "precio"
 val PROD_TIPO_VENTA = "tipoVenta"
 val PROD_PED_CANTIDAD = "cantidad"
+val PROD_ID_PROVEEDOR = "idProveedor"
 
 
 // Pedido Atributos

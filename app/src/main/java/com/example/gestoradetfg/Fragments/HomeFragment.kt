@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.Auxiliar
-import com.example.gestoradetfg.Utils.Auxiliar.listaPedidos
+import com.example.gestoradetfg.Utils.AuxiliarDB
+import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -53,8 +53,8 @@ class HomeFragment : Fragment() {
 
         recyclerHome.setHasFixedSize(true)
         recyclerHome.layoutManager = LinearLayoutManager(view.context)
-        Auxiliar.adapterPedido= RecyclerHomePedido (conUsuarioActivity, listaPedidos)
-        recyclerHome.adapter =Auxiliar.adapterPedido
+        AuxiliarDB.adapterPedido= RecyclerHomePedido (conUsuarioActivity, listaPedidos)
+        recyclerHome.adapter =AuxiliarDB.adapterPedido
 
     }
 

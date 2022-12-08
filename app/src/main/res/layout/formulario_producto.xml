@@ -47,13 +47,13 @@
             android:text="@string/proveedor"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/f_et_prod_proveedor"
+            app:layout_constraintEnd_toStartOf="@+id/f_sp_prod_proveedor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView"
             app:layout_constraintVertical_bias="0.2"/>
 
-        <EditText
-            android:id="@+id/f_et_prod_proveedor"
+        <Spinner
+            android:id="@+id/f_sp_prod_proveedor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -88,6 +88,8 @@
             android:layout_marginEnd="20dp"
             android:maxLines="1"
             android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -104,18 +106,19 @@
             android:textSize="16dp"
             android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/f_et_prod_tipoVenta"
+            app:layout_constraintEnd_toStartOf="@+id/f_sp_prod_tipoVenta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView"
             app:layout_constraintVertical_bias="0.6"/>
 
-        <EditText
-            android:id="@+id/f_et_prod_tipoVenta"
+        <Spinner
+            android:id="@+id/f_sp_prod_tipoVenta"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             android:imeOptions="actionDone"
+            android:entries="@array/arrayTipoVentas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -132,18 +135,21 @@
             android:textSize="16dp"
             android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/f_et_prod_calidad"
+            app:layout_constraintEnd_toStartOf="@+id/f_rat_prod_calidad"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView"
             app:layout_constraintVertical_bias="0.8"/>
 
-        <EditText
-            android:id="@+id/f_et_prod_calidad"
-            android:layout_width="0dp"
+        <RatingBar
+            android:id="@+id/f_rat_prod_calidad"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
-            android:inputType="textMultiLine"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:transformPivotX="50dp"
+            android:transformPivotY="40dp"
             android:imeOptions="actionDone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
