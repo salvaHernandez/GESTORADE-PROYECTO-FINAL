@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.Model.Producto
@@ -84,7 +85,7 @@ class ProductoFragment : Fragment() {
 
 
         recyclerProducto.setHasFixedSize(true)
-        recyclerProducto.layoutManager = LinearLayoutManager(view.context)
+        recyclerProducto.layoutManager = GridLayoutManager(view.context, 2)
         adapterProducto = RecyclerProducto (conUsuarioActivity, listaProductos)
         recyclerProducto.adapter = adapterProducto
 
@@ -153,7 +154,6 @@ class ProductoFragment : Fragment() {
     }
 
     private fun getIdProv(): String {
-        Log.w("Salva", "El id del proveedor seleccionado es: " +listaProveedores[form_proveedor.selectedItemPosition - 1].id)
         return listaProveedores[form_proveedor.selectedItemPosition - 1].id
     }
 

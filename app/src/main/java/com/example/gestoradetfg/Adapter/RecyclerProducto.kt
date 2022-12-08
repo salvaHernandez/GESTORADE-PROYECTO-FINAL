@@ -49,11 +49,22 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val nombre = view.findViewById<TextView>(R.id.txtCard_prod_nombre)
+        val prov = view.findViewById<TextView>(R.id.txtCard_prod_proveedor)
+        val precio = view.findViewById<TextView>(R.id.txtCard_prod_precio)
+        val calidad = view.findViewById<RatingBar>(R.id.rtbCardProd)
 
 
         fun bind(p: Producto, context: AppCompatActivity, adaptador: RecyclerProducto) {
             nombre.text = p.nombre
 
+            prov.text = getNombreProv(p.idProvedoor)
+
+            if (p.tipoVenta) {
+                precio.append(" ud: "+p.precio)
+            } else {
+                precio.append(" kg: "+p.precio)
+            }
+            calidad.rating = p.calidad.toFloat()
 
             itemView.setOnClickListener{
                 modificarProducto(context, p)
@@ -65,6 +76,16 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
                 true
             }
 
+        }
+
+        private fun getNombreProv(idProvedoor: String): String {
+
+            for (i in 0..listaProveedores.size-1) {
+                if (listaProveedores[i].id == idProvedoor) {
+                    return listaProveedores[i].nombre
+                }
+            }
+            return ""
         }
 
         private fun modificarProducto(context: AppCompatActivity, p: Producto) {
