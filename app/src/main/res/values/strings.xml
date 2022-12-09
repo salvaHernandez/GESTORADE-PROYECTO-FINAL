@@ -30,8 +30,9 @@
     <string name="msgCardEnvio">Envio en:</string>
     <string name="dia">Día</string>
     <string name="precioCard">Precio </string>
+    <string name="enviarA">Enviar pedido a: </string>
 
-
+    strWhatsappNoInstalado
     <string-array name="arrayTipoVentas">
         <item></item>
         <item>Unidad</item>
@@ -44,6 +45,8 @@
 
 
     <string name="Atencion">Precaución!!</string>
+
+    <string name="err_whatsappNoInstalado">Necesitas instalar Whatsapp</string>
 
     <string name="err_camposVacios">Rellena los campos con *</string>
     <string name="StrCheckSesion">Mantener sesion iniciada</string>
@@ -71,6 +74,11 @@
     <string name="msgProductoModNoSucc">Problema al modificar el producto</string>
     <string name="msgBorrarProducto">¿Quieres borrar este producto?</string>
     <string name="msgBorrarProductoNosucc">Problema al borrar el producto</string>
+
+    <string name="msgPedidoA">Buenas, enviame estos productos a la direccion</string>
+    <string name="msgDespedidaPed">Si hay algun problema contactame cuanto antes.</string>
+    <string name="msgGracias">Gracias, un saludo</string>
+
 
 
     <string name="open_drawer">Abrir</string>

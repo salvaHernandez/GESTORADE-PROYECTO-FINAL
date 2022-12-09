@@ -26,6 +26,7 @@
     <string name="msgCardEnvio">Shipping in:</string>
     <string name="dia">Day</string>
     <string name="precioCard">Price </string>
+    <string name="enviarA">Send order to: </string>
 
 
 
@@ -46,6 +47,7 @@
     <string name="tiempoEnvio">Shipping 48h</string>
     <string name="tipoVenta">Sale type</string>
 
+    <string name="err_whatsappNoInstalado">You need to install Whatsapp</string>
     <string name="err_camposVacios">Fill in the fields with *</string>
     <string name="StrCheckSesion">Keep me signed in</string>
     <string name="smsBienvenida">Orders pending receipt</string>
@@ -74,6 +76,9 @@
     <string name="msgBorrarProducto">Do you want to delete this product?</string>
     <string name="msgBorrarProductoNosucc">Problem deleting the product</string>
 
+    <string name="msgPedidoA">Hi, send me these products to the address</string>
+    <string name="msgDespedidaPed">If there is any problem contact me as soon as possible.</string>
+    <string name="msgGracias">Thanks you, a greeting</string>
 
 
 

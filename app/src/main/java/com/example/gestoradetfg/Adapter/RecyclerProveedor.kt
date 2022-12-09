@@ -11,15 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.*
-import com.example.gestoradetfg.Fragments.*
-import com.example.gestoradetfg.MainActivity.Companion.db
-import com.example.gestoradetfg.MainActivity.Companion.idUsuarioActivo
 import com.example.gestoradetfg.Model.Proveedor
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.AuxiliarDB
-import com.example.gestoradetfg.Utils.AuxiliarDB.addProveedor
 import com.example.gestoradetfg.Utils.AuxiliarDB.borrarProveedor
-import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.Utils.AuxiliarDB.modProveedor
 
 

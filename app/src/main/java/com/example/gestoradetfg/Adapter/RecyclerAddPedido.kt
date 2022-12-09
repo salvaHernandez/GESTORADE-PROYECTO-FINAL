@@ -36,7 +36,7 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:List
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val idPedido = view.findViewById<TextView>(R.id.t_add_ped_id_card)
+        val idPedido = view.findViewById<TextView>(R.id.t_add_ped_nombre_card)
 
 
         fun bind(p: Producto, context: AppCompatActivity, adaptador: RecyclerAddPedido) {

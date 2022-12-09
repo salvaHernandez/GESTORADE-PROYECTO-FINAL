@@ -32,6 +32,7 @@ object AuxiliarDB {
     lateinit var listaProductos: ArrayList<Producto>
     lateinit var listaProductoProveedor: ArrayList<Producto>
     lateinit var listaProductoPedido: ArrayList<Producto>
+    lateinit var direcciones : ArrayList <String>
 
 
     fun initListas() {
@@ -40,6 +41,14 @@ object AuxiliarDB {
         listaProductos=arrayListOf()
         listaProductoProveedor=arrayListOf()
         listaProductoPedido=arrayListOf()
+        direcciones=arrayListOf()
+    }
+
+
+    fun getDirecciones () {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).get().addOnSuccessListener { result ->
+            direcciones = result.get(PROV_DIRECCION) as ArrayList<String>
+        }
     }
 
 

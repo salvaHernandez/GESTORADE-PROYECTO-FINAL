@@ -17,6 +17,7 @@ import com.example.gestoradetfg.Adapter.RecyclerHomePedido
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.AuxiliarDB
+import com.example.gestoradetfg.Utils.AuxiliarDB.direcciones
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
@@ -30,6 +31,7 @@ private const val ARG_PARAM1="param1"
 private const val ARG_PARAM2="param2"
 private lateinit var bindingPedido : FragmentHomeBinding
 private lateinit var form_proveedores : Spinner
+private lateinit var form_direcciones : Spinner
 
 /**
  * A simple [Fragment] subclass.
@@ -85,8 +87,10 @@ class HomeFragment : Fragment() {
 
                 if (form_proveedores.selectedItemPosition != 0) {
                     var id = getIdProv()
+                    var dir = form_direcciones.selectedItem.toString()
                     var intentPedido = Intent(conUsuarioActivity, pedidoActivity::class.java)
 
+                    intentPedido.putExtra("direccion", dir)
                     intentPedido.putExtra("id", id)
                     //   intent.putExtra("user", usuario)
                     startActivity(intentPedido)
@@ -111,7 +115,9 @@ class HomeFragment : Fragment() {
 
     private fun inicializaForm(view: View) {
         form_proveedores = view.findViewById(R.id.f_sp_elije_proveedor)
+        form_direcciones = view.findViewById(R.id.f_sp_elije_direccion)
         rellenaComboProv()
+        rellenaComboDir()
 
 
     }
@@ -131,6 +137,15 @@ class HomeFragment : Fragment() {
         val aaProveedores = ArrayAdapter<String> (conUsuarioActivity, android.R.layout.simple_spinner_dropdown_item)
         aaProveedores.addAll(nombresProv)
         form_proveedores.adapter = aaProveedores
+
+    }
+
+
+    fun rellenaComboDir() {
+
+        val aaDirecciones = ArrayAdapter<String> (conUsuarioActivity, android.R.layout.simple_spinner_dropdown_item)
+        aaDirecciones.addAll(direcciones)
+        form_direcciones.adapter = aaDirecciones
 
     }
 
