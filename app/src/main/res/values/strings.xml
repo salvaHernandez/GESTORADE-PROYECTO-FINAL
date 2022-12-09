@@ -14,6 +14,7 @@
     <string name="registrar">Registrar</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="act_add_pedido">De compras</string>
 
 
     <string name="nombre">Nombre *:</string>
@@ -28,7 +29,7 @@
     <string name="tipoVentaForm">Tipo venta *:</string>
     <string name="tiempoEnvioProv">Tiempo de envio *:</string>
     <string name="msgCardEnvio">Envio en:</string>
-    <string name="dia">Día</string>
+    <string name="dia">Días</string>
     <string name="precioCard">Precio </string>
     <string name="enviarA">Enviar pedido a: </string>
 

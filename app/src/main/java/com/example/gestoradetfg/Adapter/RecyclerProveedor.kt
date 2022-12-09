@@ -16,13 +16,13 @@ import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.AuxiliarDB.borrarProveedor
 import com.example.gestoradetfg.Utils.AuxiliarDB.modProveedor
 
-
 private lateinit var form_prov_nombre : EditText
 private lateinit var form_prov_direccion : EditText
 private lateinit var form_prov_email : EditText
 private lateinit var form_prov_telefono : EditText
 private lateinit var form_prov_observaciones : EditText
 private lateinit var form_prov_tiempoEnvio : EditText
+
 class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:ArrayList<Proveedor>): RecyclerView.Adapter<RecyclerProveedor.ViewHolder>() {
 
 
@@ -53,7 +53,6 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
         val telefono = view.findViewById<TextView>(R.id.txtCardProvTelefono)
         val envio = view.findViewById<TextView>(R.id.txtCardProvEnvio)
         val obs = view.findViewById<TextView>(R.id.txtCardProvObservaciones)
-        val msgDia = view.findViewById<TextView>(R.id.txtCardMsg2)
 
 
 
@@ -67,9 +66,7 @@ class RecyclerProveedor (var context: AppCompatActivity, var listaProveedores:Ar
             telefono.text = p.telefono.toString()
             envio.text = p.tiempoEnvio.toString()
             obs.text = p.observaciones
-            if (p.tiempoEnvio > 1) {
-                msgDia.append("s")
-            }
+
 
 
             itemView.setOnClickListener{

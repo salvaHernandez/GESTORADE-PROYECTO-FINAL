@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    app:cardCornerRadius="40dp"
+    app:cardCornerRadius="30dp"
     app:cardElevation="1dp"
     app:cardUseCompatPadding="true"
     >
@@ -15,7 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         tools:layout_editor_absoluteX="-20dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        android:background="@color/fondo_card_producto"
+        >
 
         <TextView
             android:id="@+id/txtCard_prod_nombre"
@@ -57,7 +59,6 @@
             android:layout_height="25dp"
             android:textAlignment="gravity"
             android:textSize="11dp"
-            android:text="@string/precioCard"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"

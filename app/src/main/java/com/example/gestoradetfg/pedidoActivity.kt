@@ -1,6 +1,7 @@
 package com.example.gestoradetfg
 
-import android.R
+
+import com.example.gestoradetfg.R
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -30,7 +31,7 @@ class pedidoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPedidoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        this.setTitle(R.string.act_add_pedido)
 
         val bundle = intent.extras
         val idProv = bundle?.getString("id")

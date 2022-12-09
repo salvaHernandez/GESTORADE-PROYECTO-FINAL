@@ -12,9 +12,7 @@ import com.example.gestoradetfg.Fragments.*
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.AuxiliarDB.addProducto
 import com.example.gestoradetfg.Utils.AuxiliarDB.borrarProducto
-import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.Utils.AuxiliarDB.modProducto
 
@@ -60,9 +58,9 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
             prov.text = getNombreProv(p.idProvedoor)
 
             if (p.tipoVenta) {
-                precio.append(" ud: "+p.precio)
+                precio.text = ("Precio ud: "+p.precio)
             } else {
-                precio.append(" kg: "+p.precio)
+                precio.text = ("Precio kg: "+p.precio)
             }
             calidad.rating = p.calidad.toFloat()
 

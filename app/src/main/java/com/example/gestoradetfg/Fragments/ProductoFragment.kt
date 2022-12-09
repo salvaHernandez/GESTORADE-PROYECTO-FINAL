@@ -1,8 +1,6 @@
 package com.example.gestoradetfg.Fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +8,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.AuxiliarDB
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterProducto
 import com.example.gestoradetfg.Utils.AuxiliarDB.addProducto
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos

@@ -20,5 +20,20 @@
     <color name="floatBtn">#576319</color>
     <color name="alternativo">#576319</color>
 
+    <!-- Colores de los card -->
+    <color name="fondo_card_producto">#AB48BADC</color>
+    <color name="fondo_card_proveedor">#B000BCD4</color>
+    <color name="fondo_card_add_producto">#378BA4</color>
+
+
+    <color name="d">#012E4A</color>
+    <color name="a">#013F4E</color>
+    <color name="w">#054C46</color>
+    <color name="g">#FF343947</color>
+    <color name="f">#B000BCD4</color>  <!--  No usar opcion -->
+    <color name="y">#AB48BADC</color>  <!--  Segunda opcion -->
+    <color name="b">#378BA4</color>    <!--  Favorito de las otras -->
+    <color name="c">#E8EDE7</color>
+    <color name="e">#576319</color>
 
 </resources>

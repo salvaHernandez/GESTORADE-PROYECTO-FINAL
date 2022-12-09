@@ -15,6 +15,7 @@
     <string name="registrar">Register</string>
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
+    <string name="act_add_pedido">Shopping</string>
 
 
     <string name="nombre">Name *:</string>
@@ -24,7 +25,7 @@
     <string name="observaciones">Observations :</string>
     <string name="tiempoEnvioProv">Shipping time *:</string>
     <string name="msgCardEnvio">Shipping in:</string>
-    <string name="dia">Day</string>
+    <string name="dia">Days</string>
     <string name="precioCard">Price </string>
     <string name="enviarA">Send order to: </string>
 

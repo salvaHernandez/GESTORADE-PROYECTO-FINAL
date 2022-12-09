@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         tools:layout_editor_absoluteX="-20dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        android:background="@color/fondo_card_add_producto">
 
         <TextView
             android:id="@+id/t_add_ped_nombre_card"
