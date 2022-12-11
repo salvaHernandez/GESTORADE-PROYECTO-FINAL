@@ -17,13 +17,16 @@
     <color name="fondo">#E8EDE7</color>
     <color name="fondo2">#CFCBC8</color>
     <color name="letraOscura">#012E4A</color>
-    <color name="floatBtn">#576319</color>
     <color name="alternativo">#576319</color>
 
+
+    <color name="colorMain">#54715E</color>
+    <color name="floatBtn">#54715E</color>
+
     <!-- Colores de los card -->
-    <color name="fondo_card_producto">#AB48BADC</color>
-    <color name="fondo_card_proveedor">#B000BCD4</color>
-    <color name="fondo_card_add_producto">#378BA4</color>
+    <color name="fondo_card_producto">#A7C1AE</color>
+    <color name="fondo_card_proveedor">#A7C1AE</color>
+    <color name="fondo_card_add_producto">#A7C1AE</color>
 
 
     <color name="d">#012E4A</color>
@@ -35,5 +38,15 @@
     <color name="b">#378BA4</color>    <!--  Favorito de las otras -->
     <color name="c">#E8EDE7</color>
     <color name="e">#576319</color>
+
+    <color name="aaaa">#cfffca</color>
+    <color name="eee">#5F836B</color>
+    <color name="dd">#b0f2c2</color>
+    <color name="aa">#c7f6d4</color>
+    <color name="ww">#ededaf</color>
+    <color name="qg">#fcfcda</color>
+    <color name="ff">#4F6054</color>  <!--  No usar opcion -->
+
+    9bd3ae
 
 </resources>

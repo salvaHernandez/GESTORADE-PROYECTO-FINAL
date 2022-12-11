@@ -30,6 +30,7 @@
     <string name="enviarA">Send order to: </string>
 
 
+    <string name="cantidad">quantity</string>
 
     <string name="proveedor">Provider *:</string>
     <string name="precio">Price *:</string>
@@ -42,6 +43,13 @@
         <item></item>
         <item>Unit</item>
         <item>Weight</item>
+    </string-array>
+
+
+    <string-array name="arrayTipoEnvio">
+        <item></item>
+        <item>WhatsApp</item>
+        <item>Mail</item>
     </string-array>
 
     <string name="favoritos">Favorites</string>
@@ -80,6 +88,7 @@
     <string name="msgPedidoA">Hi, send me these products to the address</string>
     <string name="msgDespedidaPed">If there is any problem contact me as soon as possible.</string>
     <string name="msgGracias">Thanks you, a greeting</string>
+    <string name="envioPor">Send to*:</string>
 
 
 

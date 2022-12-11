@@ -35,6 +35,7 @@ object AuxiliarDB {
     lateinit var direcciones : ArrayList <String>
 
 
+
     fun initListas() {
         listaProveedores=arrayListOf()
         listaPedidos=arrayListOf()
@@ -203,7 +204,7 @@ object AuxiliarDB {
             PED_RECIBIDO to false
         )
 
-        db.collection(COLECCION_PEDIDO).add(pedidoData).addOnSuccessListener {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO).add(pedidoData).addOnSuccessListener {
             Toast.makeText(context, R.string.msgPedidoCrearSucc, Toast.LENGTH_SHORT).show()
 
         }.addOnFailureListener {
@@ -211,30 +212,6 @@ object AuxiliarDB {
         }
 
     }
-
-
-    fun modProveedor(proveedor: Proveedor, context: Context) {
-        var proveedorData=hashMapOf(
-            PROV_DIRECCION to proveedor.direccion,
-            PROV_EMAIL to proveedor.email,
-            PROV_NOMBRE to proveedor.nombre,
-            PROV_OBSERVACIONES to proveedor.observaciones,
-            PROV_TELEFONO to proveedor.telefono,
-            PROV_TIEMPO_ENVIO to proveedor.tiempoEnvio,
-            PROV_VALORACION to proveedor.valoracion
-        )
-        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
-            .document(proveedor.id).set(proveedorData)
-            .addOnSuccessListener {
-
-                adapterProveedor.notifyDataSetChanged()
-                Toast.makeText(context, R.string.msgProveedorModSucc, Toast.LENGTH_SHORT).show()
-
-            }.addOnFailureListener {
-                Toast.makeText(context, R.string.msgProveedorModNoSucc, Toast.LENGTH_SHORT).show()
-            }
-    }
-
 
     fun addProveedor(proveedor: Proveedor, context: Context) {
 
@@ -262,6 +239,32 @@ object AuxiliarDB {
             }
 
     }
+
+
+    fun modProveedor(proveedor: Proveedor, context: Context) {
+        var proveedorData=hashMapOf(
+            PROV_DIRECCION to proveedor.direccion,
+            PROV_EMAIL to proveedor.email,
+            PROV_NOMBRE to proveedor.nombre,
+            PROV_OBSERVACIONES to proveedor.observaciones,
+            PROV_TELEFONO to proveedor.telefono,
+            PROV_TIEMPO_ENVIO to proveedor.tiempoEnvio,
+            PROV_VALORACION to proveedor.valoracion
+        )
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
+            .document(proveedor.id).set(proveedorData)
+            .addOnSuccessListener {
+
+                adapterProveedor.notifyDataSetChanged()
+                Toast.makeText(context, R.string.msgProveedorModSucc, Toast.LENGTH_SHORT).show()
+
+            }.addOnFailureListener {
+                Toast.makeText(context, R.string.msgProveedorModNoSucc, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
+
 
 
 

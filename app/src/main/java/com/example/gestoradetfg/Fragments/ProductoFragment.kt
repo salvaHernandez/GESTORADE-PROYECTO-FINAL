@@ -179,6 +179,7 @@ class ProductoFragment : Fragment() {
     private fun validaCampos(): Boolean {
         var camposValidos = false
 
+
         if (form_nombre.text.toString().trim() != "" &&
             form_precio.text.toString().trim() != "" &&
             form_tipoVenta.selectedItemPosition != 0 &&

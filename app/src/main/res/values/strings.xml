@@ -17,6 +17,7 @@
     <string name="act_add_pedido">De compras</string>
 
 
+    <string name="cantidad">cantidad</string>
     <string name="nombre">Nombre *:</string>
     <string name="direccion">Dirección *:</string>
     <string name="email">Email *:</string>
@@ -38,6 +39,13 @@
         <item></item>
         <item>Unidad</item>
         <item>Peso</item>
+    </string-array>
+
+
+    <string-array name="arrayTipoEnvio">
+        <item></item>
+        <item>WhatsApp</item>
+        <item>Correo</item>
     </string-array>
 
     <string name="favoritos">Favoritos</string>
@@ -79,6 +87,7 @@
     <string name="msgPedidoA">Buenas, enviame estos productos a la direccion</string>
     <string name="msgDespedidaPed">Si hay algun problema contactame cuanto antes.</string>
     <string name="msgGracias">Gracias, un saludo</string>
+    <string name="envioPor">Enviar por*:</string>
 
 
 

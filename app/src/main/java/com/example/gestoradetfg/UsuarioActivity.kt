@@ -24,7 +24,7 @@ class UsuarioActivity : AppCompatActivity() {
 
 
         // Codigo generado por los fragments
-        binding=ActivityUsuarioBinding.inflate(layoutInflater)
+        binding = ActivityUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 

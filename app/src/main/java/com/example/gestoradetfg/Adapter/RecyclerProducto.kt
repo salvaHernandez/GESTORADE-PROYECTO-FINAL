@@ -2,11 +2,13 @@ package com.example.gestoradetfg.Adapter
 
 import android.app.AlertDialog
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Fragments.*
 import com.example.gestoradetfg.Model.Producto
@@ -93,6 +95,8 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
             builder.setView(view)
 
             var oldProducto = p.copy()
+
+
             rellenarCampos(p, view)
 
             builder.setPositiveButton(R.string.modificar ) {view, _  ->
@@ -155,12 +159,19 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
             form_prod_nombre.text = Editable.Factory.getInstance().newEditable(p.nombre)
             form_prod_precio.text = Editable.Factory.getInstance().newEditable(p.precio.toString())
             form_prod_calidad.rating = Editable.Factory.getInstance().newEditable(p.calidad.toString()).toString().toFloat()
+
+
+            Log.w("Pepe", "size de tipo venta: "+    form_prod_tipoVenta.size.toString())
+
             if (p.tipoVenta) {
                 form_prod_tipoVenta.setSelection(1)
             } else {
                 form_prod_tipoVenta.setSelection(2)
             }
             rellenaComboProv()
+
+
+
             for (i in 0..listaProveedores.size -1) {
                 if (listaProveedores[i].id.equals(p.idProvedoor)) {
                     form_prod_proveedor.setSelection(i+1)
@@ -186,7 +197,7 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
             } else {
                 p.tipoVenta = false
             }
-            p.idProvedoor = listaProveedores[form_prod_proveedor.selectedItemPosition - 1].id
+
         }
     }
 }

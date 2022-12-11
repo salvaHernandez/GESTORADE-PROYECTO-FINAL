@@ -2,10 +2,12 @@ package com.example.gestoradetfg.Fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -13,14 +15,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.*
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
+import com.example.gestoradetfg.Model.MetodoEnvio
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
-import com.example.gestoradetfg.Utils.AuxiliarDB
+import com.example.gestoradetfg.Utils.AuxiliarDB.adapterPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.direcciones
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlin.collections.ArrayList as ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +33,7 @@ private const val ARG_PARAM2="param2"
 private lateinit var bindingPedido : FragmentHomeBinding
 private lateinit var form_proveedores : Spinner
 private lateinit var form_direcciones : Spinner
+private lateinit var form_metodoEnvio : Spinner
 
 /**
  * A simple [Fragment] subclass.
@@ -67,8 +72,8 @@ class HomeFragment : Fragment() {
 
         recyclerHome.setHasFixedSize(true)
         recyclerHome.layoutManager = LinearLayoutManager(view.context)
-        AuxiliarDB.adapterPedido= RecyclerHomePedido (conUsuarioActivity, listaPedidos)
-        recyclerHome.adapter =AuxiliarDB.adapterPedido
+        adapterPedido= RecyclerHomePedido (conUsuarioActivity, listaPedidos)
+        recyclerHome.adapter =adapterPedido
 
 
         bindingPedido.btnCrearPedido.setOnClickListener {
@@ -82,14 +87,15 @@ class HomeFragment : Fragment() {
 
             builder.setPositiveButton(R.string.crear ) {view, _  ->
 
-                if (form_proveedores.selectedItemPosition != 0) {
-                    var id = getIdProv()
-                    var dir = form_direcciones.selectedItem.toString()
+                if (form_proveedores.selectedItemPosition != 0 && form_metodoEnvio.selectedItemPosition != 0) {
+
                     var intentPedido = Intent(conUsuarioActivity, pedidoActivity::class.java)
 
-                    intentPedido.putExtra("direccion", dir)
-                    intentPedido.putExtra("id", id)
-                    //   intent.putExtra("user", usuario)
+                    intentPedido.putExtra("id", getIdProv())
+                    intentPedido.putExtra("direccion", form_direcciones.selectedItem.toString())
+                    intentPedido.putExtra("tiempoEnvio", getTiempoEnvioProv())
+                    intentPedido.putExtra("metodo", form_metodoEnvio.selectedItemPosition)
+
                     startActivity(intentPedido)
 
 
@@ -113,14 +119,19 @@ class HomeFragment : Fragment() {
     private fun inicializaForm(view: View) {
         form_proveedores = view.findViewById(R.id.f_sp_elije_proveedor)
         form_direcciones = view.findViewById(R.id.f_sp_elije_direccion)
+        form_metodoEnvio = view.findViewById(R.id.f_sp_metodo_envio)
         rellenaComboProv()
         rellenaComboDir()
-
+        rellenaComboMetodoEnvio()
 
     }
 
     private fun getIdProv(): String {
         return listaProveedores[form_proveedores.selectedItemPosition - 1].id
+    }
+
+    private fun getTiempoEnvioProv() : Long {
+        return listaProveedores[form_proveedores.selectedItemPosition - 1].tiempoEnvio
     }
 
     fun rellenaComboProv() {
@@ -138,11 +149,41 @@ class HomeFragment : Fragment() {
     }
 
 
+    fun rellenaComboMetodoEnvio() {
+
+        ArrayAdapter.createFromResource(conUsuarioActivity, R.array.arrayTipoEnvio, android.R.layout.simple_spinner_item).also {
+                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            form_metodoEnvio.adapter = adapter
+        }
+
+        /*
+            var adapter = ArrayAdapter<MetodoEnvio>(conUsuarioActivity, android.R.layout.simple_spinner_item, l).also {
+            adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            form_metodoEnvio.adapter = adapter
+            Log.e("Salva", adapter.toString())
+        }
+
+        ArrayAdapter.createFromResource(conUsuarioActivity, R.array.arrayTipoEnvio, android.R.layout.simple_spinner_item).also {
+                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            form_metodoEnvio.adapter = adapter
+        }
+
+
+                val metodos = ArrayAdapter<MetodoEnvio>(conUsuarioActivity, android.R.layout.simple_spinner_dropdown_item)
+
+        metodos.addAll(l)
+        Log.e("Salva", "Envios:  "+l.toString())
+        form_metodoEnvio.adapter = metodos
+         */
+
+    }
+
     fun rellenaComboDir() {
 
         val aaDirecciones = ArrayAdapter<String> (conUsuarioActivity, android.R.layout.simple_spinner_dropdown_item)
         aaDirecciones.addAll(direcciones)
         form_direcciones.adapter = aaDirecciones
+        Log.e("Salva", "direcciones:  "+aaDirecciones.toString())
 
     }
 
