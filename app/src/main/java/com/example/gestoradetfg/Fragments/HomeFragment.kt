@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gestoradetfg.*
 import com.example.gestoradetfg.Adapter.RecyclerHomePedido
-import com.example.gestoradetfg.Model.MetodoEnvio
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterPedido
@@ -24,7 +22,6 @@ import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlin.collections.ArrayList as ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -69,6 +66,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.w("Pepe","tamaño lista pedidos: "+ listaPedidos.size)
+        Log.w("Pepe","lista pedidos: "+ listaPedidos.toString())
 
         recyclerHome.setHasFixedSize(true)
         recyclerHome.layoutManager = LinearLayoutManager(view.context)
@@ -157,23 +157,17 @@ class HomeFragment : Fragment() {
         }
 
         /*
-            var adapter = ArrayAdapter<MetodoEnvio>(conUsuarioActivity, android.R.layout.simple_spinner_item, l).also {
-            adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            form_metodoEnvio.adapter = adapter
-            Log.e("Salva", adapter.toString())
-        }
 
-        ArrayAdapter.createFromResource(conUsuarioActivity, R.array.arrayTipoEnvio, android.R.layout.simple_spinner_item).also {
-                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            form_metodoEnvio.adapter = adapter
-        }
+        var envio : ArrayList<Int>
+        envio = arrayListOf()
+        envio.add(R.drawable.ic_whatsapp)
+        envio.add(R.drawable.ic_mail)
 
+        val aaEnvio = ArrayAdapter<Int> (conUsuarioActivity,android.R.layout.simple_spinner_dropdown_item)
+        aaEnvio.add(envio[0])
+        aaEnvio.add(envio[1])
 
-                val metodos = ArrayAdapter<MetodoEnvio>(conUsuarioActivity, android.R.layout.simple_spinner_dropdown_item)
-
-        metodos.addAll(l)
-        Log.e("Salva", "Envios:  "+l.toString())
-        form_metodoEnvio.adapter = metodos
+        form_metodoEnvio.adapter = aaEnvio
          */
 
     }

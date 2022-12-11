@@ -16,9 +16,11 @@ import com.example.gestoradetfg.Adapter.RecyclerAddPedido
 import com.example.gestoradetfg.MainActivity.Companion.idUsuarioActivo
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
+import com.example.gestoradetfg.Utils.AuxiliarDB
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterAddPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.addPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
+import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoProveedor
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
@@ -47,7 +49,8 @@ class pedidoActivity : AppCompatActivity() {
         listaProductoProveedor.clear()
 
         var pedido = datosPedido(direccion, idProv, tiempoEnvio)
-
+        pedido.productos.clear()
+        listaProductoPedido.clear()
         getProductosProveedor(idProv!!)
 
 
@@ -71,6 +74,7 @@ class pedidoActivity : AppCompatActivity() {
             builder.setTitle("Pedido")
             var viewFormulario = layoutInflater.inflate(R.layout.model_pedido, null)
 
+
             incializaVista(viewFormulario, pedido)
             builder.setView(viewFormulario)
 
@@ -81,7 +85,7 @@ class pedidoActivity : AppCompatActivity() {
                 } else {
                     enviarPorMail(pedido)
                 }
-
+                onBackPressed()
             }
 
             builder.setNegativeButton(R.string.cancelar) { view, _ ->

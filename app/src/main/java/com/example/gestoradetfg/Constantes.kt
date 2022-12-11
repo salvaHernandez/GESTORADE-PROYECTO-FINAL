@@ -2,10 +2,10 @@ package com.example.gestoradetfg
 
 // Colecciones
 val COLECCION_USUARIO = "Usuario"
-val COLECCION_PEDIDO = "pedido"
+val COLECCION_PEDIDO = "Pedido"
 val COLECCION_PROVEEDOR = "Proveedor"
 val COLECCION_PRODUCTO = "Producto"
-val COLECCION_PEDIDO_PRODUCTO = "productosPedido"
+val COLECCION_PRODUCTO_PEDIDO = "productosPedido"
 
 // Proveedor Atributos
 val PROV_DIRECCION = "direccion"
@@ -33,3 +33,10 @@ val PED_PROVEEDOR = "proveedor"
 val PED_RECIBIDO = "recibido"
 val PED_TIEMPO_ENVIO = "tiempoEnvio"
 val PED_USUARIO = "usuario"
+
+
+// Usuario Atributos
+val USUARIO_DIRECCION = "direccion"
+val USUARIO_APELLIDOS = "apellidos"
+val USUARIO_NOMBRE = "nombre"
+val USUARIO_TELEFONO = "telefono"

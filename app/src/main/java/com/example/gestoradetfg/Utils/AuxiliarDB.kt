@@ -53,15 +53,15 @@ object AuxiliarDB {
     }
 
 
-    fun getPedidos(idUsuario: String) {
+    fun getPedidos() {
         var pedido: Pedido
         var producto: Producto
         listaPedidos.clear()
         listaProductoPedido.clear()
 
         // LLamada a la bd para recoger los pedidos de un usuario
-        db.collection(COLECCION_PEDIDO)
-            .whereEqualTo(PED_USUARIO, idUsuario)
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO)
+            .whereEqualTo(PED_USUARIO, idUsuarioActivo)
             .get()
             .addOnSuccessListener { r_pedidos ->
 
@@ -70,7 +70,7 @@ object AuxiliarDB {
 
                     // Llamada a la bd que recoge todos los productos de el pedido
                     db.collection(COLECCION_PEDIDO).document(doc_pedido.id)
-                        .collection(COLECCION_PEDIDO_PRODUCTO)
+                        .collection(COLECCION_PRODUCTO_PEDIDO)
                         .get()
                         .addOnSuccessListener { r_producto ->
 
@@ -106,7 +106,7 @@ object AuxiliarDB {
                         }.addOnFailureListener { exception ->
                             Log.w(
                                 ContentValues.TAG,
-                                "Coleccion: " + COLECCION_PEDIDO_PRODUCTO + " Error: ",
+                                "Coleccion: " + COLECCION_PRODUCTO_PEDIDO + " Error: ",
                                 exception
                             )
                         }
@@ -204,13 +204,41 @@ object AuxiliarDB {
             PED_RECIBIDO to false
         )
 
-        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO).add(pedidoData).addOnSuccessListener {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO).add(pedidoData).addOnSuccessListener { result ->
+
+            Log.w("Pepe","id: " +result.id)
+            addProductosPedido(result.id)
+            Log.w("Pepe","Entra")
+
             Toast.makeText(context, R.string.msgPedidoCrearSucc, Toast.LENGTH_SHORT).show()
 
         }.addOnFailureListener {
             Toast.makeText(context, R.string.msgPedidoCrearNoSucc, Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun addProductosPedido(id : String) {
+
+        for (i in 0..listaProductoPedido.size-1) {
+            Log.w("Pepe","producto" + listaProductoPedido[i].toString())
+
+            var productoData=hashMapOf(
+                PROD_ID_PROVEEDOR to listaProductoPedido[i].idProvedoor,
+                PROD_TIPO_VENTA to listaProductoPedido[i].tipoVenta,
+                PROD_CALIDAD to listaProductoPedido[i].calidad,
+                PROD_PRECIO to listaProductoPedido[i].precio,
+                PROD_NOMBRE to listaProductoPedido[i].nombre,
+                PROD_PED_CANTIDAD to listaProductoPedido[i].cantidad,
+            )
+
+            db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
+                .collection(COLECCION_PEDIDO).document(id)
+                .collection(COLECCION_PRODUCTO_PEDIDO).add(productoData).addOnSuccessListener {
+
+                }
+
+        }
     }
 
     fun addProveedor(proveedor: Proveedor, context: Context) {
@@ -262,9 +290,6 @@ object AuxiliarDB {
                 Toast.makeText(context, R.string.msgProveedorModNoSucc, Toast.LENGTH_SHORT).show()
             }
     }
-
-
-
 
 
 

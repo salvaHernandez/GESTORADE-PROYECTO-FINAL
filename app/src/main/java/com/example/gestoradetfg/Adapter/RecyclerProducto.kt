@@ -161,7 +161,6 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
             form_prod_calidad.rating = Editable.Factory.getInstance().newEditable(p.calidad.toString()).toString().toFloat()
 
 
-            Log.w("Pepe", "size de tipo venta: "+    form_prod_tipoVenta.size.toString())
 
             if (p.tipoVenta) {
                 form_prod_tipoVenta.setSelection(1)

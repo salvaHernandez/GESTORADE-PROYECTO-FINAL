@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.gestoradetfg.Model.ProviderType
 import com.example.gestoradetfg.Utils.AuxiliarDB.getDirecciones
+import com.example.gestoradetfg.Utils.AuxiliarDB.getPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.getProveedores
 import com.example.gestoradetfg.Utils.AuxiliarDB.initListas
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -38,10 +39,11 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
 
-        idUsuarioActivo = "Correo"
+        idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
         initListas()
         getProveedores()
         getDirecciones()
+        getPedidos()
         irLogin("", ProviderType.GOOGLE, true, true)
 
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.

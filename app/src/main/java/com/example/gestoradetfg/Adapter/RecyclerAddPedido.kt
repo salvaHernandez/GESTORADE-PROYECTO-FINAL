@@ -13,6 +13,8 @@ import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.Utils.AuxiliarDB
+import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
+import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoProveedor
 
 class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:ArrayList<Producto>,var pedido: Pedido): RecyclerView.Adapter<RecyclerAddPedido.ViewHolder>() {
@@ -55,14 +57,13 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
 
             btnAddProducto.setOnClickListener {
 
-                Toast.makeText(context, cantidad.value.toString(), Toast.LENGTH_SHORT).show()
 
                 p.cantidad = cantidad.value.toDouble()
                 pedido.productos.add(p)
-
+                listaProductoPedido.add(p)
                 listaProductoProveedor.remove(p)
                 adaptador.notifyDataSetChanged()
-
+                cantidad.value = 1
 
 
             }
