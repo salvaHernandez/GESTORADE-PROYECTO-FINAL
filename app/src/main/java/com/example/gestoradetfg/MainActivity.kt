@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_registro.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         var idUsuarioActivo = ""
     }
 
-    lateinit var etTelefono : EditText
+    lateinit var telefono : EditText
+    lateinit var codigo : EditText
     private var RC_SIGN_IN = 1
     private lateinit var auth : FirebaseAuth
     var storedVerificationId : String = ""
@@ -49,20 +51,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         auth = Firebase.auth
-        etTelefono = findViewById(R.id.editTextPhone)
-        idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
+        telefono = findViewById(R.id.etTelefono)
+        codigo = findViewById(R.id.etCodigo)
+ //       idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
+
+
         initListas()
-
-
-/*
-
-        getProveedores()
-        getDirecciones()
-        getPedidos()
-
- */
-  //      irLogin("", ProviderType.GOOGLE, true, true)
-
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
         val analy: FirebaseAnalytics= FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
@@ -96,10 +90,11 @@ class MainActivity : AppCompatActivity() {
     fun loginTelefono (view:View) {
         Log.w("Pepe","entra en el login")
 
-        if (view == btnLoginGoogle) {
+
+        if (view == btnEnviar) {
             val options = PhoneAuthOptions.newBuilder(auth)
         //        .setPhoneNumber("+34673292203")       // Phone number to verify
-                .setPhoneNumber("+34673034299")       // Phone number to verify
+                .setPhoneNumber("+34"+etTelefono.text.toString().trim())       // Phone number to verify
                 .setTimeout(120L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(this)                 // Activity (for callback binding)
                 .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
@@ -108,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             PhoneAuthProvider.verifyPhoneNumber(options)
 
         } else if (view == btnVerificar) {
-            val codigo = etTelefono.text.toString()
+            val codigo = codigo.text.toString().trim()
             val credential = PhoneAuthProvider.getCredential(storedVerificationId!!, codigo)
             auth.signInWithCredential(credential).addOnCompleteListener { task ->
                 if (task.isSuccessful) {

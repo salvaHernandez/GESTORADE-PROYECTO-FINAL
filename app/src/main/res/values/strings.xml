@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GESTORADE TFG</string>
+    <string name="app_name">GESTORADE</string>
     <string name="request_id_token">527625456564-mg3j0ucdarcnm0tljqgfr9frngn65q3n.apps.googleusercontent.com</string>
     <string name="userName">Usuario</string>
     <string name="pass">Contraseña</string>
@@ -16,14 +16,16 @@
     <string name="cancelar">Cancelar</string>
     <string name="act_add_pedido">De compras</string>
     <string name="registroUser">REGISTRO DE USUARIO</string>
+    <string name="codVerificacion">Codigo verificación</string>
 
-    <string name="nif">NIF :</string>
+    <string name="nif">NIF *:</string>
     <string name="cantidad">cantidad</string>
     <string name="nombre">Nombre *:</string>
     <string name="direccion">Dirección *:</string>
     <string name="email">Email *:</string>
     <string name="telefono">Telefono *:</string>
     <string name="observaciones">Observaciones :</string>
+    <string name="phone">Telefono</string>
 
     <string name="proveedor">Proveedor *:</string>
     <string name="precio">Precio *:</string>

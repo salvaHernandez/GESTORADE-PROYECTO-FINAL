@@ -17,9 +17,11 @@
     <string name="cancelar">Cancel</string>
     <string name="act_add_pedido">Shopping</string>
     <string name="registroUser">USER REGISTER</string>
+    <string name="codVerificacion">Verification code</string>
+    <string name="phone">Phone</string>
 
 
-    <string name="nif">NIF :</string>
+    <string name="nif">NIF *:</string>
     <string name="nombre">Name *:</string>
     <string name="direccion">Address *:</string>
     <string name="email">Email *:</string>

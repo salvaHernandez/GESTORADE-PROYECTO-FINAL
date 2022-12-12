@@ -38,7 +38,8 @@ class RegistroActivity : AppCompatActivity() {
 
         if (binding.tRegistroNombre.text.toString().trim() != "" &&
             binding.tRegistroDireccion.text.toString().trim() != "" &&
-            binding.tRegistroEmail.text.toString().trim() != "") {
+            binding.tRegistroEmail.text.toString().trim() != "" &&
+            binding.tRegistroNif.text.toString().trim() != "") {
             campos = true
         }
         return campos
