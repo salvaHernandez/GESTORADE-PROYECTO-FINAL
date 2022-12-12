@@ -27,17 +27,9 @@
     <color name="fondo_card_producto">#A7C1AE</color>
     <color name="fondo_card_proveedor">#A7C1AE</color>
     <color name="fondo_card_add_producto">#A7C1AE</color>
+    <color name="fondo_registro">#9CC3A6</color>
 
 
-    <color name="d">#012E4A</color>
-    <color name="a">#013F4E</color>
-    <color name="w">#054C46</color>
-    <color name="g">#FF343947</color>
-    <color name="f">#B000BCD4</color>  <!--  No usar opcion -->
-    <color name="y">#AB48BADC</color>  <!--  Segunda opcion -->
-    <color name="b">#378BA4</color>    <!--  Favorito de las otras -->
-    <color name="c">#E8EDE7</color>
-    <color name="e">#576319</color>
 
     <color name="aaaa">#cfffca</color>
     <color name="eee">#5F836B</color>
@@ -47,6 +39,6 @@
     <color name="qg">#fcfcda</color>
     <color name="ff">#4F6054</color>  <!--  No usar opcion -->
 
-    9bd3ae
+
 
 </resources>

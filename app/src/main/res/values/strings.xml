@@ -15,8 +15,9 @@
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
     <string name="act_add_pedido">De compras</string>
+    <string name="registroUser">REGISTRO DE USUARIO</string>
 
-
+    <string name="nif">NIF :</string>
     <string name="cantidad">cantidad</string>
     <string name="nombre">Nombre *:</string>
     <string name="direccion">Dirección *:</string>
@@ -76,7 +77,8 @@
     <string name="msgBorrarProveedor">¿Quieres borrar este proveedor?</string>
     <string name="msgBorrarProveedorNoSucc">Problema al borrar el proveedor</string>
 
-
+    <string name="msgUsuarioCrearSucc">Usuario creado correctamente</string>
+    <string name="msgUsuarioCrearNoSucc">Problema al crear usuario</string>
     <string name="msgProductoCrearSucc">Producto creado correctamente</string>
     <string name="msgProductoCrearNoSucc">Problema al crear el producto</string>
     <string name="msgProductoModSucc">Producto modificado correctamente</string>
@@ -88,7 +90,6 @@
     <string name="msgDespedidaPed">Si hay algun problema contactame cuanto antes.</string>
     <string name="msgGracias">Gracias, un saludo</string>
     <string name="envioPor">Enviar por*:</string>
-
 
 
     <string name="open_drawer">Abrir</string>

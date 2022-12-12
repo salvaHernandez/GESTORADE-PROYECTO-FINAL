@@ -55,8 +55,8 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             cantidad.minValue = 1
             cantidad.maxValue = 50
 
-            btnAddProducto.setOnClickListener {
 
+            btnAddProducto.setOnClickListener {
 
                 p.cantidad = cantidad.value.toDouble()
                 pedido.productos.add(p)
@@ -72,3 +72,5 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
     }
 
 }
+
+

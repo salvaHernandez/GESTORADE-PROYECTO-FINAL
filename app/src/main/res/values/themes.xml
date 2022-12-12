@@ -15,9 +15,7 @@
 
 
 
-        <!-- Estilo de todos los editText y Combo.
-        <item name="editTextStyle">@style/Widget.AppCompat.EditText.GESTORADE</item>
-        <item name="checkedTextViewStyle">@style/Widget.AppCompat.TextView.GESTORADE</item>-->
+
 
 
         <item name="android:textColor">@color/black</item>
@@ -30,13 +28,17 @@
 
 
 
+    <!-- Estilo de todos los editText y Combo.
+
+     <item name="editTextStyle">@style/Widget.AppCompat.EditText.GESTORADE</item>
+     <item name="checkedTextViewStyle">@style/Widget.AppCompat.TextView.GESTORADE</item>
 
     <style name="Widget.AppCompat.TextView.GESTORADE" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/y</item>
         <item name="android:textColorHint">@color/y</item>
         <item name="android:fontFamily">@font/font_normal</item>
     </style>
-
+-->
 
 
 </resources>

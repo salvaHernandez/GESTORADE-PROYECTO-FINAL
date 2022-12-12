@@ -37,6 +37,7 @@ val PED_USUARIO = "usuario"
 
 // Usuario Atributos
 val USUARIO_DIRECCION = "direccion"
-val USUARIO_APELLIDOS = "apellidos"
+val USUARIO_NIF = "nif"
 val USUARIO_NOMBRE = "nombre"
 val USUARIO_TELEFONO = "telefono"
+val USUARIO_EMAIL = "email"

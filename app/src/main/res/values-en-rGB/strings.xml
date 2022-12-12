@@ -16,8 +16,10 @@
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
     <string name="act_add_pedido">Shopping</string>
+    <string name="registroUser">USER REGISTER</string>
 
 
+    <string name="nif">NIF :</string>
     <string name="nombre">Name *:</string>
     <string name="direccion">Address *:</string>
     <string name="email">Email *:</string>
@@ -70,6 +72,9 @@
     <string name="msgPedidoCrearSucc">Order completed correctly</string>
     <string name="msgPedidoCrearNoSucc">Problem when ordering</string>
 
+
+    <string name="msgUsuarioCrearSucc">User created successfully</string>
+    <string name="msgUsuarioCrearNoSucc">Problem creating user</string>
     <string name="msgProveedorCrearSucc">Provider created successfully</string>
     <string name="msgProveedorCrearNoSucc">Problem creating provider</string>
     <string name="msgProveedorModSucc">Provider modifield successfully</string>

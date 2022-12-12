@@ -18,6 +18,8 @@ import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
 
 import com.example.gestoradetfg.Model.Proveedor
+import com.example.gestoradetfg.Model.Usuario
+import com.firebase.ui.auth.data.model.User
 import kotlinx.android.synthetic.main.fragment_producto.*
 import kotlinx.coroutines.*
 
@@ -32,8 +34,7 @@ object AuxiliarDB {
     lateinit var listaProductos: ArrayList<Producto>
     lateinit var listaProductoProveedor: ArrayList<Producto>
     lateinit var listaProductoPedido: ArrayList<Producto>
-    lateinit var direcciones : ArrayList <String>
-
+    lateinit var direcciones: ArrayList<String>
 
 
     fun initListas() {
@@ -46,10 +47,31 @@ object AuxiliarDB {
     }
 
 
-    fun getDirecciones () {
-        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).get().addOnSuccessListener { result ->
-            direcciones = result.get(PROV_DIRECCION) as ArrayList<String>
+    fun getDirecciones() {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).get()
+            .addOnSuccessListener { result ->
+                direcciones=result.get(PROV_DIRECCION) as ArrayList<String>
+            }
+    }
+
+
+    fun existeUsuario(idUser:String) : Boolean {
+        var existe : Boolean = false
+        db.collection(COLECCION_USUARIO).document(idUser)
+            .get().addOnSuccessListener {  result ->
+
+                if (result != null && result.data != null) {
+                    idUsuarioActivo = idUser
+                    getProveedores()
+                    getDirecciones()
+                    getPedidos()
+                    existe = true
+                }
         }
+        Log.w("Pepe", "existe usuario: " + existe.toString())
+
+
+        return existe
     }
 
 
@@ -204,11 +226,10 @@ object AuxiliarDB {
             PED_RECIBIDO to false
         )
 
-        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO).add(pedidoData).addOnSuccessListener { result ->
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO)
+            .add(pedidoData).addOnSuccessListener { result ->
 
-            Log.w("Pepe","id: " +result.id)
             addProductosPedido(result.id)
-            Log.w("Pepe","Entra")
 
             Toast.makeText(context, R.string.msgPedidoCrearSucc, Toast.LENGTH_SHORT).show()
 
@@ -218,28 +239,6 @@ object AuxiliarDB {
 
     }
 
-    private fun addProductosPedido(id : String) {
-
-        for (i in 0..listaProductoPedido.size-1) {
-            Log.w("Pepe","producto" + listaProductoPedido[i].toString())
-
-            var productoData=hashMapOf(
-                PROD_ID_PROVEEDOR to listaProductoPedido[i].idProvedoor,
-                PROD_TIPO_VENTA to listaProductoPedido[i].tipoVenta,
-                PROD_CALIDAD to listaProductoPedido[i].calidad,
-                PROD_PRECIO to listaProductoPedido[i].precio,
-                PROD_NOMBRE to listaProductoPedido[i].nombre,
-                PROD_PED_CANTIDAD to listaProductoPedido[i].cantidad,
-            )
-
-            db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
-                .collection(COLECCION_PEDIDO).document(id)
-                .collection(COLECCION_PRODUCTO_PEDIDO).add(productoData).addOnSuccessListener {
-
-                }
-
-        }
-    }
 
     fun addProveedor(proveedor: Proveedor, context: Context) {
 
@@ -256,9 +255,9 @@ object AuxiliarDB {
         db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
             .add(proveedorData).addOnSuccessListener { result ->
 
-                proveedor.id = result.id
+                proveedor.id=result.id
                 listaProveedores.add(proveedor)
-                adapterProveedor.listaProveedores = listaProveedores
+                adapterProveedor.listaProveedores=listaProveedores
                 adapterProveedor.notifyDataSetChanged()
                 Toast.makeText(context, R.string.msgProveedorCrearSucc, Toast.LENGTH_SHORT).show()
 
@@ -293,8 +292,29 @@ object AuxiliarDB {
 
 
 
+    fun addUsuario(usuario: Usuario, context: Context) {
 
-    fun addProducto(producto: Producto, proveedor: String, context: Context) {
+        var userData=hashMapOf(
+            USUARIO_DIRECCION to usuario.direccion,
+            USUARIO_NIF to usuario.nif,
+            USUARIO_NOMBRE to usuario.nombre,
+            USUARIO_TELEFONO to usuario.telefono,
+            USUARIO_EMAIL to usuario.email,
+        )
+
+        db.collection(COLECCION_USUARIO).document(usuario.telefono)
+            .set(userData).addOnSuccessListener {
+
+                Toast.makeText(context, R.string.msgUsuarioCrearSucc, Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(context, R.string.msgUsuarioCrearNoSucc, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
+
+    fun addProducto(producto: Producto, context: Context) {
+
         var productoData=hashMapOf(
             PROD_ID_PROVEEDOR to producto.idProvedoor,
             PROD_TIPO_VENTA to producto.tipoVenta,
@@ -304,11 +324,11 @@ object AuxiliarDB {
             PROD_PED_CANTIDAD to null,
         )
 
-        db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PROVEEDOR)
-            .document(producto.idProvedoor).collection(
-                COLECCION_PRODUCTO
-            ).add(productoData).addOnSuccessListener {
+        db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
+            .collection(COLECCION_PROVEEDOR).document(producto.idProvedoor)
+            .collection(COLECCION_PRODUCTO).add(productoData).addOnSuccessListener { result ->
 
+                producto.id=result.id
                 listaProductos.add(producto)
                 adapterProducto.listaProducto=listaProductos
                 adapterProducto.notifyDataSetChanged()
@@ -320,7 +340,6 @@ object AuxiliarDB {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.N)
     fun borrarProveedor(p: Proveedor, context: AppCompatActivity) {
         db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(
@@ -328,13 +347,13 @@ object AuxiliarDB {
         ).document(p.id).delete().addOnSuccessListener {
 
             listaProveedores.remove(p)
-            adapterProveedor.listaProveedores = listaProveedores
+            adapterProveedor.listaProveedores=listaProveedores
             adapterProveedor.notifyDataSetChanged()
 
-            Log.e("Salva", "ListaProductos :"+listaProductos.toString())
+            Log.e("Salva", "ListaProductos :" + listaProductos.toString())
 
-            listaProductos.removeIf { prod -> (prod.idProvedoor == p.id )}
-            Log.e("Salva", "ListaProductos :"+listaProductos.toString())
+            listaProductos.removeIf { prod -> (prod.idProvedoor == p.id) }
+            Log.e("Salva", "ListaProductos :" + listaProductos.toString())
         }.addOnFailureListener {
             Toast.makeText(context, R.string.msgBorrarProveedorNoSucc, Toast.LENGTH_SHORT).show()
         }
@@ -350,7 +369,7 @@ object AuxiliarDB {
             .addOnSuccessListener {
 
                 listaProductos.remove(p)
-                adapterProducto.listaProducto = listaProductos
+                adapterProducto.listaProducto=listaProductos
                 adapterProducto.notifyDataSetChanged()
 
             }.addOnFailureListener {
@@ -359,6 +378,7 @@ object AuxiliarDB {
             }
 
     }
+
 
     fun modProducto(producto: Producto, oldProducto: Producto, context: Context) {
 
@@ -389,17 +409,28 @@ object AuxiliarDB {
 
     }
 
-    private fun mapPedido(pedido: Pedido) {
 
-        var pedidoData=hashMapOf(
-            PED_DIRECCION to pedido.direccionDeEnvio,
-            PED_PRECIO to pedido.precioFinal,
-            PED_PROVEEDOR to pedido.proveedor,
-            PED_TIEMPO_ENVIO to pedido.tiempoEnvio,
-            PED_USUARIO to pedido.usuario,
-            PED_RECIBIDO to false
-        )
+    private fun addProductosPedido(id: String) {
+
+        for (i in 0..listaProductoPedido.size - 1) {
+            Log.w("Pepe", "producto" + listaProductoPedido[i].toString())
+
+            var productoData=hashMapOf(
+                PROD_ID_PROVEEDOR to listaProductoPedido[i].idProvedoor,
+                PROD_TIPO_VENTA to listaProductoPedido[i].tipoVenta,
+                PROD_CALIDAD to listaProductoPedido[i].calidad,
+                PROD_PRECIO to listaProductoPedido[i].precio,
+                PROD_NOMBRE to listaProductoPedido[i].nombre,
+                PROD_PED_CANTIDAD to listaProductoPedido[i].cantidad,
+            )
+
+            db.collection(COLECCION_USUARIO).document(idUsuarioActivo)
+                .collection(COLECCION_PEDIDO).document(id)
+                .collection(COLECCION_PRODUCTO_PEDIDO).add(productoData).addOnSuccessListener {
+
+                }
+
+        }
     }
-
 
 }
