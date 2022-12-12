@@ -82,8 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     fun loginTelefono (view:View) {
 
-
-        if (view == btnEnviar) {
+        if (view == btnEnviar && telefono.text.isNotEmpty()) {
             val options = PhoneAuthOptions.newBuilder(auth)
         //        .setPhoneNumber("+34673292203")       // Phone number to verify
                 .setPhoneNumber("+34"+etTelefono.text.toString().trim())       // Phone number to verify
@@ -94,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 //        auth.setLanguageCode(Locale.getDefault().language)
             PhoneAuthProvider.verifyPhoneNumber(options)
 
-        } else if (view == btnVerificar) {
+        } else if (view == btnVerificar && codigo.text.isNotEmpty()) {
             val codigo = codigo.text.toString().trim()
             val credential = PhoneAuthProvider.getCredential(storedVerificationId!!, codigo)
             auth.signInWithCredential(credential).addOnCompleteListener { task ->

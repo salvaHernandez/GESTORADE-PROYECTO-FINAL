@@ -63,14 +63,12 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             cantidad.setOnValueChangedListener { picker, oldVal, newVal ->
 
                 precioActual = (newVal* p.precio)
-                precioActual = formatNumDecimal(precioActual)
-                precio.text = precioActual.toString()+"€"
-                Log.w("Pepe","Final de setOnValueChanged")
+                precio.text = formatNumDecimal(precioActual) +"€"
 
             }
 
             btnAddProducto.setOnClickListener {
-                Log.w("Pepe","Principio de setOnClickListener")
+
                 p.cantidad = cantidad.value.toDouble()
                 p.precio = precioActual
                 pedido.precioFinal += precioActual
@@ -80,18 +78,17 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
                 adaptador.notifyDataSetChanged()
                 cantidad.value = 1
 
-
             }
         }
 
-        fun formatNumDecimal(valor : Double): Double{
+        fun formatNumDecimal(valor : Double): String{
 
             val df = DecimalFormat("#.##")
             df.roundingMode = RoundingMode.DOWN
             val numFormateado = df.format(valor)
 
 
-            return numFormateado.toString().toDouble()
+            return numFormateado.toString()
 
         }
 

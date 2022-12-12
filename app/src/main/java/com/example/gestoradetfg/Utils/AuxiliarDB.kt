@@ -214,7 +214,11 @@ object AuxiliarDB {
         db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO)
             .add(pedidoData).addOnSuccessListener { result ->
 
+                pedido.id = result.id
+                listaPedidos.add(pedido)
+                adapterPedido.notifyDataSetChanged()
             addProductosPedido(result.id)
+
 
             Toast.makeText(context, R.string.msgPedidoCrearSucc, Toast.LENGTH_SHORT).show()
 
