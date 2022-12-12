@@ -74,7 +74,6 @@ class ProductoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.w("Pepe", "Pedidos: "+ AuxiliarDB.listaPedidos.toString())
 
         ArrayAdapter.createFromResource(
             conUsuarioActivity,

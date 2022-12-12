@@ -398,7 +398,6 @@ object AuxiliarDB {
     private fun addProductosPedido(id: String) {
 
         for (i in 0..listaProductoPedido.size - 1) {
-            Log.w("Pepe", "producto" + listaProductoPedido[i].toString())
 
             var productoData=hashMapOf(
                 PROD_ID_PROVEEDOR to listaProductoPedido[i].idProvedoor,

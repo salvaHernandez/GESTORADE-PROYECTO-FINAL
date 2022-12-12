@@ -45,13 +45,8 @@ class MainActivity : AppCompatActivity() {
         telefono = findViewById(R.id.etTelefono)
         codigo = findViewById(R.id.etCodigo)
 
-        idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
+        idUsuarioActivo = "+34673034299"
 
-        initListas()
-        getPedidos()
-        getProveedores()
-        getDirecciones()
-        irLogin()
 
 
 
@@ -86,7 +81,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loginTelefono (view:View) {
-        Log.w("Pepe","entra en el login")
 
 
         if (view == btnEnviar) {
@@ -113,12 +107,11 @@ class MainActivity : AppCompatActivity() {
                     db.collection(COLECCION_USUARIO).document(idUser)
                         .get().addOnSuccessListener {  result ->
 
-                            Log.w("Pepe", "usuario: " + result.data.toString())
-                            Log.w("Pepe", "usuario: " + result.exists())
                             if (result.exists()) {
+                                initListas()
+                                getPedidos()
                                 getProveedores()
                                 getDirecciones()
-                                getPedidos()
                                 irLogin()
                             } else {
                                 val intent : Intent

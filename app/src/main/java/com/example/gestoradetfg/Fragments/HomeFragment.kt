@@ -69,6 +69,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        listaProductosProv = arrayListOf()
+
         recyclerHome.setHasFixedSize(true)
         recyclerHome.layoutManager = LinearLayoutManager(view.context)
         adapterPedido= RecyclerHomePedido (conUsuarioActivity, listaPedidos)

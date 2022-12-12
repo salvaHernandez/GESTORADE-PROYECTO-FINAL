@@ -1,6 +1,7 @@
 package com.example.gestoradetfg.Adapter
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,7 +49,7 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
         val btnAddProducto = view.findViewById<ImageButton>(R.id.btn_add_prod_pedido)
         val cantidad = view.findViewById<NumberPicker>(R.id.numCantidadProd)
         val precio = view.findViewById<TextView>(R.id.t_add_ped_precio)
-
+        var precioActual : Double = 0.0
 
 
         fun bind(p: Producto, context: AppCompatActivity, adaptador: RecyclerAddPedido, pedido: Pedido) {
@@ -58,17 +59,21 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             precio.text = p.precio.toString()+"€"
 
 
+
             cantidad.setOnValueChangedListener { picker, oldVal, newVal ->
-                precio.text = formatNum((newVal * p.precio)).toString()+"€"
+
+                precioActual = (newVal* p.precio)
+                precioActual = formatNumDecimal(precioActual)
+                precio.text = precioActual.toString()+"€"
+                Log.w("Pepe","Final de setOnValueChanged")
 
             }
 
             btnAddProducto.setOnClickListener {
-
+                Log.w("Pepe","Principio de setOnClickListener")
                 p.cantidad = cantidad.value.toDouble()
-
-                p.precio = formatNum(formatoNumero(precio.text.toString()))
-                pedido.precioFinal += p.precio
+                p.precio = precioActual
+                pedido.precioFinal += precioActual
                 pedido.productos.add(p)
                 listaProductoPedido.add(p)
                 listaProductoProveedor.remove(p)
@@ -79,16 +84,18 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             }
         }
 
-        fun formatNum(valor : Double): Double{
+        fun formatNumDecimal(valor : Double): Double{
 
             val df = DecimalFormat("#.##")
             df.roundingMode = RoundingMode.DOWN
             val numFormateado = df.format(valor)
-            return numFormateado.toDouble()
+
+
+            return numFormateado.toString().toDouble()
 
         }
 
-        fun formatoNumero(numTexto : String): Double{
+        fun formateaCaracter(numTexto : String): Double{
             var texto = numTexto.substring(0, (numTexto.length-1))
             return texto.toDouble()
         }

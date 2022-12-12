@@ -106,7 +106,6 @@ class pedidoActivity : AppCompatActivity() {
         for (i in 0..pedido.productos.size-1) {
             precioPedido += pedido.productos[0].precio
         }
-        Log.w("Pepe", "Precio pedido: " + precioPedido.toString())
         return precioPedido
     }
 
