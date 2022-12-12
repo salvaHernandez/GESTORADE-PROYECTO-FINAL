@@ -1,6 +1,7 @@
 package com.example.gestoradetfg.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.gestoradetfg.Adapter.RecyclerProducto
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.R
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
+import com.example.gestoradetfg.Utils.AuxiliarDB
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterProducto
 import com.example.gestoradetfg.Utils.AuxiliarDB.addProducto
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos
@@ -72,6 +74,7 @@ class ProductoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.w("Pepe", "Pedidos: "+ AuxiliarDB.listaPedidos.toString())
 
         ArrayAdapter.createFromResource(
             conUsuarioActivity,

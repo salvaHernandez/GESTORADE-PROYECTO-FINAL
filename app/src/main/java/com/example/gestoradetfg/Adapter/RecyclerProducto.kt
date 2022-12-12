@@ -65,6 +65,7 @@ class RecyclerProducto (var context: AppCompatActivity, var listaProducto:ArrayL
                 precio.text = ("Precio kg: "+p.precio)
             }
             calidad.rating = p.calidad.toFloat()
+            calidad.isEnabled = false
 
             itemView.setOnClickListener{
                 modificarProducto(context, p)

@@ -55,25 +55,6 @@ object AuxiliarDB {
     }
 
 
-    fun existeUsuario(idUser:String) : Boolean {
-        var existe : Boolean = false
-        db.collection(COLECCION_USUARIO).document(idUser)
-            .get().addOnSuccessListener {  result ->
-
-                if (result != null && result.data != null) {
-                    idUsuarioActivo = idUser
-                    getProveedores()
-                    getDirecciones()
-                    getPedidos()
-                    existe = true
-                }
-        }
-        Log.w("Pepe", "existe usuario: " + existe.toString())
-
-
-        return existe
-    }
-
 
     fun getPedidos() {
         var pedido: Pedido
@@ -125,6 +106,9 @@ object AuxiliarDB {
                             )
                             // Añadimos el pedido a la lista
                             listaPedidos.add(pedido)
+                            adapterPedido.listaPedidos = listaPedidos
+                            adapterPedido.notifyDataSetChanged()
+
                         }.addOnFailureListener { exception ->
                             Log.w(
                                 ContentValues.TAG,
@@ -133,6 +117,7 @@ object AuxiliarDB {
                             )
                         }
                 }
+
             }.addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Coleccion: " + COLECCION_PEDIDO + " Error: ", exception)
             }

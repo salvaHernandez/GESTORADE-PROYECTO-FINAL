@@ -8,6 +8,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
@@ -79,7 +80,9 @@ class pedidoActivity : AppCompatActivity() {
             builder.setView(viewFormulario)
 
             builder.setPositiveButton(R.string.enviar ) {view, _  ->
+
                 addPedido(pedido, this)
+
                 if (metodoEnvio == 1) {
                     enviarPorWhastsapp(pedido)
                 } else {
@@ -96,6 +99,15 @@ class pedidoActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun calculaPrecioPedido(pedido: Pedido):Double {
+        var precioPedido : Double = 0.0
+        for (i in 0..pedido.productos.size-1) {
+            precioPedido += pedido.productos[0].precio
+        }
+        Log.w("Pepe", "Precio pedido: " + precioPedido.toString())
+        return precioPedido
     }
 
 

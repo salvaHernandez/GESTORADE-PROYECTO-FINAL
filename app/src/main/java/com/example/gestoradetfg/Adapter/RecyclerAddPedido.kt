@@ -1,19 +1,19 @@
 package com.example.gestoradetfg.Adapter
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.NumberPicker
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.R
-import com.example.gestoradetfg.Utils.AuxiliarDB
-import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoProveedor
 
@@ -47,6 +47,7 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
         val nombre = view.findViewById<TextView>(R.id.t_add_ped_nombre_card)
         val btnAddProducto = view.findViewById<ImageButton>(R.id.btn_add_prod_pedido)
         val cantidad = view.findViewById<NumberPicker>(R.id.numCantidadProd)
+        val precio = view.findViewById<TextView>(R.id.t_add_ped_precio)
 
 
 
@@ -54,11 +55,20 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             nombre.text = p.nombre
             cantidad.minValue = 1
             cantidad.maxValue = 50
+            precio.text = p.precio.toString()+"€"
 
+
+            cantidad.setOnValueChangedListener { picker, oldVal, newVal ->
+                precio.text = formatNum((newVal * p.precio)).toString()+"€"
+
+            }
 
             btnAddProducto.setOnClickListener {
 
                 p.cantidad = cantidad.value.toDouble()
+
+                p.precio = formatNum(formatoNumero(precio.text.toString()))
+                pedido.precioFinal += p.precio
                 pedido.productos.add(p)
                 listaProductoPedido.add(p)
                 listaProductoProveedor.remove(p)
@@ -69,6 +79,19 @@ class RecyclerAddPedido(var context : AppCompatActivity, var list_prod_prov:Arra
             }
         }
 
+        fun formatNum(valor : Double): Double{
+
+            val df = DecimalFormat("#.##")
+            df.roundingMode = RoundingMode.DOWN
+            val numFormateado = df.format(valor)
+            return numFormateado.toDouble()
+
+        }
+
+        fun formatoNumero(numTexto : String): Double{
+            var texto = numTexto.substring(0, (numTexto.length-1))
+            return texto.toDouble()
+        }
     }
 
 }

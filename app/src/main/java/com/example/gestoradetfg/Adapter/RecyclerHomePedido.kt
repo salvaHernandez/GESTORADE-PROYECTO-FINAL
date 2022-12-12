@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.R
+import com.example.gestoradetfg.Utils.AuxiliarDB
 
 class RecyclerHomePedido (var context: AppCompatActivity, var listaPedidos:ArrayList<Pedido>) : RecyclerView.Adapter<RecyclerHomePedido.ViewHolder>(){
 
@@ -32,16 +33,18 @@ class RecyclerHomePedido (var context: AppCompatActivity, var listaPedidos:Array
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val idPedido = view.findViewById<TextView>(R.id.t_ped_id_card)
+        val precioFinal = view.findViewById<TextView>(R.id.t_ped_precio_final)
+        val diaEntrega = view.findViewById<TextView>(R.id.t_ped_dia_entrega)
         val direccion = view.findViewById<TextView>(R.id.t_ped_direccion_card)
-
+        val proveedor = view.findViewById<TextView>(R.id.t_ped_proveedor_card)
 
 
         fun bind(p: Pedido, context: AppCompatActivity) {
 
-            idPedido.text = p.id
             direccion.text = p.direccionDeEnvio
-            itemView.isEnabled = p.recibido
+            precioFinal.text = p.precioFinal.toString()
+            proveedor.text = getNombreProv(p.proveedor)
+            
 
             // Si clicka hacer...
             itemView.setOnClickListener {
@@ -50,5 +53,15 @@ class RecyclerHomePedido (var context: AppCompatActivity, var listaPedidos:Array
             }
 
         }
+        private fun getNombreProv(idProvedoor: String): String {
+
+            for (i in 0..AuxiliarDB.listaProveedores.size-1) {
+                if (AuxiliarDB.listaProveedores[i].id == idProvedoor) {
+                    return AuxiliarDB.listaProveedores[i].nombre
+                }
+            }
+            return ""
+        }
+
     }
 }

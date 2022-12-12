@@ -8,16 +8,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.gestoradetfg.Model.ProviderType
-import com.example.gestoradetfg.Utils.AuxiliarDB
-import com.example.gestoradetfg.Utils.AuxiliarDB.existeUsuario
 import com.example.gestoradetfg.Utils.AuxiliarDB.getDirecciones
 import com.example.gestoradetfg.Utils.AuxiliarDB.getPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.getProveedores
 import com.example.gestoradetfg.Utils.AuxiliarDB.initListas
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -26,9 +20,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.activity_registro.*
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -53,10 +44,17 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
         telefono = findViewById(R.id.etTelefono)
         codigo = findViewById(R.id.etCodigo)
- //       idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
 
+        idUsuarioActivo = "tqDQF2AEVCBo2FhYWyd3"
 
         initListas()
+        getPedidos()
+        getProveedores()
+        getDirecciones()
+        irLogin()
+
+
+
         //Con esto lanzamos eventos personalizados a GoogleAnalytics que podemos ver en nuestra consola de FireBase.
         val analy: FirebaseAnalytics= FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()

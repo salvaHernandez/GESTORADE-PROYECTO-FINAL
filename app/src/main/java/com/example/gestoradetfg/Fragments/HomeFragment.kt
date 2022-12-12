@@ -18,6 +18,7 @@ import com.example.gestoradetfg.Model.Producto
 import com.example.gestoradetfg.UsuarioActivity.Companion.conUsuarioActivity
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.direcciones
+import com.example.gestoradetfg.Utils.AuxiliarDB.getPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.databinding.FragmentHomeBinding
@@ -67,8 +68,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.w("Pepe","tamaño lista pedidos: "+ listaPedidos.size)
-        Log.w("Pepe","lista pedidos: "+ listaPedidos.toString())
 
         recyclerHome.setHasFixedSize(true)
         recyclerHome.layoutManager = LinearLayoutManager(view.context)
@@ -115,6 +114,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+
 
     private fun inicializaForm(view: View) {
         form_proveedores = view.findViewById(R.id.f_sp_elije_proveedor)
