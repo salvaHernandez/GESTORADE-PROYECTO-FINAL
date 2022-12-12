@@ -8,7 +8,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
@@ -17,16 +16,18 @@ import com.example.gestoradetfg.Adapter.RecyclerAddPedido
 import com.example.gestoradetfg.MainActivity.Companion.idUsuarioActivo
 import com.example.gestoradetfg.Model.Pedido
 import com.example.gestoradetfg.Model.Producto
-import com.example.gestoradetfg.Utils.AuxiliarDB
 import com.example.gestoradetfg.Utils.AuxiliarDB.adapterAddPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.addPedido
-import com.example.gestoradetfg.Utils.AuxiliarDB.listaPedidos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoPedido
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductoProveedor
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProductos
 import com.example.gestoradetfg.Utils.AuxiliarDB.listaProveedores
 import com.example.gestoradetfg.databinding.ActivityPedidoBinding
 import kotlinx.android.synthetic.main.activity_pedido.*
+import kotlin.collections.ArrayList
+import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 private lateinit var binding : ActivityPedidoBinding
@@ -81,6 +82,7 @@ class pedidoActivity : AppCompatActivity() {
 
             builder.setPositiveButton(R.string.enviar ) {view, _  ->
 
+
                 addPedido(pedido, this)
 
                 if (metodoEnvio == 1) {
@@ -101,13 +103,19 @@ class pedidoActivity : AppCompatActivity() {
 
     }
 
-    private fun calculaPrecioPedido(pedido: Pedido):Double {
-        var precioPedido : Double = 0.0
-        for (i in 0..pedido.productos.size-1) {
-            precioPedido += pedido.productos[0].precio
-        }
-        return precioPedido
+    private fun calculaFechaPedido(dias: Int): String {
+        var fechaHoy = Date()
+        val calendar = Calendar.getInstance()
+
+        calendar.time(fechaHoy)
+        calendar.add(Calendar.DAY_OF_MONTH, dias)
+
+        var formato = SimpleDateFormat("dd-MM-yyyy")
+        var fecha = formato.format(calendar.time)
+
+        return fecha.toString()
     }
+
 
 
     private fun incializaVista(view: View, p : Pedido) {
@@ -118,7 +126,7 @@ class pedidoActivity : AppCompatActivity() {
     }
 
     private fun datosPedido(dir_envio : String, idProv: String, tiempoEnvio : Long): Pedido {
-        return Pedido("",idUsuarioActivo, idProv, dir_envio, listaProductoProveedor,0.0, tiempoEnvio,false)
+        return Pedido("",idUsuarioActivo, idProv, dir_envio, listaProductoProveedor,0.0, tiempoEnvio,false, calculaFechaPedido(tiempoEnvio.toInt()))
     }
 
     private fun filtraLista() {
@@ -181,5 +189,7 @@ class pedidoActivity : AppCompatActivity() {
         return ""
     }
 
+    private operator fun Date.invoke(fechaHoy: Date) {
 
+    }
 }

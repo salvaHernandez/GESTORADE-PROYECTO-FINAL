@@ -102,7 +102,8 @@ object AuxiliarDB {
                                 listaProductoPedido,
                                 doc_pedido.get(PED_PRECIO) as Double,
                                 doc_pedido.get(PED_TIEMPO_ENVIO) as Long,
-                                doc_pedido.get(PED_RECIBIDO) as Boolean
+                                doc_pedido.get(PED_RECIBIDO) as Boolean,
+                                doc_pedido.get(PED_LLEGADA) as String
                             )
                             // Añadimos el pedido a la lista
                             listaPedidos.add(pedido)
@@ -208,7 +209,8 @@ object AuxiliarDB {
             PED_PROVEEDOR to pedido.proveedor,
             PED_TIEMPO_ENVIO to pedido.tiempoEnvio,
             PED_USUARIO to pedido.usuario,
-            PED_RECIBIDO to false
+            PED_RECIBIDO to false,
+            PED_LLEGADA to pedido.llegadaPedido
         )
 
         db.collection(COLECCION_USUARIO).document(idUsuarioActivo).collection(COLECCION_PEDIDO)

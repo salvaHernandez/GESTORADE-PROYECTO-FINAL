@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorBtn">#097269</color>
+    <color name="colorPedidoRecibido">#ededaf</color>
     <color name="colorApp">#054C46</color>
     <color name="colorSecundario">#066058</color>
 

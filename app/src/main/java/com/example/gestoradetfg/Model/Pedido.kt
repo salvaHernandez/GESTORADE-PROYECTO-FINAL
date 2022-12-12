@@ -12,7 +12,8 @@ data class Pedido(var id: String,
                   var productos: ArrayList<Producto>,
                   var precioFinal : Double,
                   var tiempoEnvio: Long,
-                  var recibido: Boolean): Serializable {
+                  var recibido: Boolean,
+                  var llegadaPedido:String): Serializable {
 
 
      fun sms(): String {

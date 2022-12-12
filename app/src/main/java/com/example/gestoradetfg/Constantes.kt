@@ -33,6 +33,8 @@ val PED_PROVEEDOR = "proveedor"
 val PED_RECIBIDO = "recibido"
 val PED_TIEMPO_ENVIO = "tiempoEnvio"
 val PED_USUARIO = "usuario"
+val PED_LLEGADA = "llegadaEnvio"
+
 
 
 // Usuario Atributos
